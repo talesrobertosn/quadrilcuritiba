@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Quadril Curitiba">
+  <rect width="64" height="64" rx="14" fill="#0F5B5E"/>
+  <!-- acetábulo (soquete) -->
+  <path d="M14 18 a18 18 0 0 1 18 18" fill="none" stroke="#EAF3F2" stroke-width="6" stroke-linecap="round"/>
+  <path d="M12 30 a20 20 0 0 1 20 -20" fill="none" stroke="#7FC4C2" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+  <!-- cabeça femoral (bola) -->
+  <circle cx="38" cy="30" r="11" fill="#EAF3F2"/>
+  <circle cx="38" cy="30" r="11" fill="none" stroke="#D9912B" stroke-width="2.5" opacity=".9"/>
+  <!-- haste femoral -->
+  <path d="M44 38 q6 7 4 16" fill="none" stroke="#EAF3F2" stroke-width="6" stroke-linecap="round"/>
+</svg>
