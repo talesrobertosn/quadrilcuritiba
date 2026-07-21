@@ -28,7 +28,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,540;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* =========================================================
-   Quadril Curitiba — sistema de design
+   Quadril Curitiba — sistema de design v2
    "Calma clínica, premium e clara"
    ========================================================= */
 
@@ -51,8 +51,10 @@
   --line:#E1E8E7;
   --radius:16px;
   --radius-sm:10px;
+  --ease:cubic-bezier(.22,.68,.24,1);
   --shadow-sm:0 1px 2px rgba(16,48,46,.04), 0 2px 8px rgba(16,48,46,.05);
   --shadow:0 6px 24px rgba(16,48,46,.08);
+  --shadow-lg:0 14px 44px rgba(16,48,46,.12);
   --maxw:1120px;
   --maxw-read:760px;
   --font-display:"Fraunces", Georgia, "Times New Roman", serif;
@@ -70,19 +72,21 @@ body{
   line-height:1.7;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
+  font-feature-settings:"kern" 1,"liga" 1;
 }
 img,svg{max-width:100%;height:auto;display:block;}
 a{color:var(--primary);text-decoration:none;}
-a:hover{text-decoration:underline;}
+a:hover{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px;}
+::selection{background:var(--primary);color:#EFFBFA;}
 
 /* ---------- Tipografia ---------- */
-h1,h2,h3,h4{font-family:var(--font-display);color:var(--ink);line-height:1.15;font-weight:560;letter-spacing:-.01em;margin:0 0 .5em;}
-h1{font-size:clamp(2.1rem,5.2vw,3.35rem);font-weight:540;}
+h1,h2,h3,h4{font-family:var(--font-display);color:var(--ink);line-height:1.15;font-weight:560;letter-spacing:-.01em;margin:0 0 .5em;text-wrap:balance;}
+h1{font-size:clamp(2.1rem,5.2vw,3.35rem);font-weight:540;letter-spacing:-.015em;}
 h2{font-size:clamp(1.55rem,3.4vw,2.15rem);margin-top:0;}
 h3{font-size:clamp(1.2rem,2.2vw,1.45rem);}
 p{margin:0 0 1.1em;}
 strong{color:var(--ink);font-weight:600;}
-.lead{font-size:clamp(1.1rem,2vw,1.3rem);color:var(--body);line-height:1.6;}
+.lead{font-size:clamp(1.1rem,2vw,1.3rem);color:var(--body);line-height:1.6;text-wrap:pretty;}
 .eyebrow{font-family:var(--font-body);font-weight:600;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);margin:0 0 .9rem;}
 
 /* ---------- Layout ---------- */
@@ -93,28 +97,35 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .section-tint{background:linear-gradient(180deg,var(--primary-tint),var(--mist));}
 .divider{height:1px;background:var(--line);border:0;margin:0;}
 
+/* ---------- Barra de progresso de leitura ---------- */
+.readbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:70;background:linear-gradient(90deg,var(--accent),#E7B25C);border-radius:0 2px 2px 0;pointer-events:none;transition:width .08s linear;}
+
 /* ---------- Cabeçalho ---------- */
-.site-header{position:sticky;top:0;z-index:50;background:rgba(246,249,249,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line);}
+.site-header{position:sticky;top:0;z-index:50;background:rgba(246,249,249,.82);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line);}
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;height:66px;}
 .brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;font-size:1.16rem;color:var(--ink);letter-spacing:-.01em;}
 .brand:hover{text-decoration:none;}
-.brand .mark{width:34px;height:34px;flex:0 0 auto;}
+.brand .mark{width:34px;height:34px;flex:0 0 auto;border-radius:9px;box-shadow:0 2px 8px rgba(15,91,94,.22);}
 .brand b{color:var(--primary);font-weight:600;}
-.nav{display:flex;align-items:center;gap:6px;}
-.nav a{color:var(--body);font-size:.96rem;font-weight:500;padding:8px 12px;border-radius:9px;}
+.nav{display:flex;align-items:center;gap:4px;}
+.nav a{color:var(--body);font-size:.95rem;font-weight:500;padding:8px 11px;border-radius:9px;transition:background .15s var(--ease),color .15s var(--ease);}
 .nav a:hover{background:var(--mist);text-decoration:none;color:var(--ink);}
 .nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:9px;width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer;color:var(--ink);}
 .nav-toggle svg{width:22px;height:22px;}
 
-@media(max-width:860px){
+@media(max-width:920px){
   .nav-toggle{display:flex;}
-  .nav{position:absolute;top:66px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 14px 16px;gap:2px;box-shadow:var(--shadow);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.18s ease;}
+  .nav{position:absolute;top:66px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 14px 16px;gap:2px;box-shadow:var(--shadow);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.18s var(--ease);}
   .nav.open{transform:none;opacity:1;pointer-events:auto;}
   .nav a{padding:12px 12px;border-radius:10px;}
 }
 
 /* ---------- Hero ---------- */
-.hero{background:linear-gradient(180deg,var(--primary-tint) 0%, var(--mist) 60%, var(--bg) 100%);padding:clamp(48px,7vw,90px) 0 clamp(40px,6vw,72px);}
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(720px 340px at 88% -10%, rgba(217,145,43,.10), transparent 60%),
+  radial-gradient(900px 460px at -12% 30%, rgba(15,91,94,.10), transparent 55%),
+  linear-gradient(180deg,var(--primary-tint) 0%, var(--mist) 60%, var(--bg) 100%);
+  padding:clamp(48px,7vw,90px) 0 clamp(40px,6vw,72px);}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center;}
 .hero h1{margin-bottom:.35em;}
 .hero .lead{margin-bottom:1.6em;color:var(--body);}
@@ -124,16 +135,19 @@ section{padding:clamp(46px,7vw,86px) 0;}
   .hero-grid{grid-template-columns:1fr;}
   .hero-art{order:-1;max-width:320px;margin-inline:auto;}
 }
+.section-tint{position:relative;overflow:hidden;}
+.section-tint::after{content:"";position:absolute;right:-140px;top:-140px;width:420px;height:420px;border-radius:50%;border:56px solid rgba(15,91,94,.05);pointer-events:none;}
 
 /* ---------- Botões ---------- */
-.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-body);font-weight:600;font-size:1rem;padding:13px 22px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:.16s ease;}
-.btn:hover{text-decoration:none;transform:translateY(-1px);}
-.btn-primary{background:var(--primary);color:#fff;box-shadow:var(--shadow-sm);}
-.btn-primary:hover{background:var(--primary-dark);color:#fff;}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-body);font-weight:600;font-size:1rem;padding:13px 22px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .16s var(--ease),box-shadow .16s var(--ease),background .16s var(--ease);}
+.btn:hover{text-decoration:none;transform:translateY(-2px);}
+.btn:active{transform:translateY(0);}
+.btn-primary{background:linear-gradient(180deg,#136B6E,var(--primary) 55%,var(--primary-dark));color:#fff;box-shadow:var(--shadow-sm),inset 0 1px 0 rgba(255,255,255,.16);}
+.btn-primary:hover{box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.16);color:#fff;}
 .btn-ghost{background:transparent;color:var(--primary);border-color:var(--primary);}
 .btn-ghost:hover{background:var(--primary-tint);}
-.btn-wa{background:var(--wa);color:#0a3d1f;}
-.btn-wa:hover{background:#1fb959;color:#0a3d1f;}
+.btn-wa{background:var(--wa);color:#0a3d1f;box-shadow:0 4px 16px rgba(37,211,102,.28);}
+.btn-wa:hover{background:#1fb959;color:#0a3d1f;box-shadow:0 8px 22px rgba(37,211,102,.32);}
 .btn svg{width:19px;height:19px;}
 .btn-row{display:flex;flex-wrap:wrap;gap:13px;}
 
@@ -142,13 +156,14 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .toc h2{font-size:1.05rem;font-family:var(--font-body);font-weight:700;letter-spacing:.02em;color:var(--ink);text-transform:none;margin-bottom:14px;}
 .toc ol{list-style:none;counter-reset:t;margin:0;padding:0;columns:2;column-gap:34px;}
 .toc li{counter-increment:t;break-inside:avoid;margin:0 0 9px;}
-.toc li a{display:flex;gap:11px;color:var(--body);font-size:.98rem;line-height:1.4;align-items:baseline;}
+.toc li a{display:flex;gap:11px;color:var(--body);font-size:.98rem;line-height:1.4;align-items:baseline;transition:transform .15s var(--ease),color .15s var(--ease);}
 .toc li a::before{content:counter(t,decimal-leading-zero);font-family:var(--font-display);color:var(--accent);font-size:.86rem;font-weight:600;flex:0 0 auto;}
-.toc li a:hover{color:var(--primary);text-decoration:none;}
+.toc li a:hover{color:var(--primary);text-decoration:none;transform:translateX(3px);}
 @media(max-width:620px){.toc ol{columns:1;}}
 
 /* ---------- Conteúdo de artigo ---------- */
-.prose h2{margin-top:1.9em;scroll-margin-top:84px;}
+.prose h2{margin-top:2em;scroll-margin-top:88px;position:relative;padding-top:16px;}
+.prose h2::before{content:"";position:absolute;top:0;left:0;width:36px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--accent),rgba(217,145,43,0));}
 .prose h3{margin-top:1.5em;}
 .prose ul{margin:0 0 1.2em;padding:0;list-style:none;}
 .prose ul li{position:relative;padding-left:26px;margin-bottom:.55em;}
@@ -156,12 +171,18 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .prose ol{margin:0 0 1.2em;padding-left:1.3em;}
 .prose ol li{margin-bottom:.5em;}
 .prose a{font-weight:500;border-bottom:1px solid var(--primary-tint);}
+.prose a:hover{border-bottom-color:var(--primary);text-decoration:none;}
+
+/* ---------- Figuras ---------- */
+.post-fig{margin:2em 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:var(--surface);}
+.post-fig img{width:100%;display:block;}
+.post-fig figcaption{font-size:.88rem;color:var(--muted);padding:12px 18px;border-top:1px solid var(--line);background:linear-gradient(180deg,#FDFEFE,var(--surface));}
 
 /* ---------- Cards / grade de tópicos ---------- */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:18px;}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;box-shadow:var(--shadow-sm);transition:.18s ease;display:flex;flex-direction:column;}
-.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
-.card .ico{width:42px;height:42px;border-radius:11px;background:var(--primary-tint);display:flex;align-items:center;justify-content:center;margin-bottom:15px;color:var(--primary);}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;box-shadow:var(--shadow-sm);transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease);display:flex;flex-direction:column;}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:#CDE2DF;}
+.card .ico{width:42px;height:42px;border-radius:11px;background:linear-gradient(160deg,var(--primary-tint),#D3E9E6);display:flex;align-items:center;justify-content:center;margin-bottom:15px;color:var(--primary);}
 .card .ico svg{width:23px;height:23px;}
 .card h3{font-size:1.18rem;margin-bottom:.4em;}
 .card p{font-size:.98rem;color:var(--muted);margin-bottom:1em;}
@@ -184,16 +205,24 @@ section{padding:clamp(46px,7vw,86px) 0;}
 @media(max-width:560px){.anatomy{grid-template-columns:1fr;max-width:280px;margin-inline:auto;}}
 
 /* ---------- Callout / sinais de alerta ---------- */
-.callout{border-radius:var(--radius);padding:24px 26px;margin:1.6em 0;border:1px solid var(--line);background:var(--surface);}
+.callout{border-radius:var(--radius);padding:24px 26px;margin:1.6em 0;border:1px solid var(--line);border-left-width:4px;background:var(--surface);}
 .callout h3{margin-top:0;display:flex;align-items:center;gap:10px;font-size:1.15rem;}
-.callout.alert{background:var(--alert-soft);border-color:#EBC9BF;}
+.callout.alert{background:var(--alert-soft);border-color:#EBC9BF;border-left-color:var(--alert);}
 .callout.alert h3{color:var(--alert);}
 .callout.alert ul li::before{background:var(--alert);}
-.callout.info{background:var(--primary-tint);border-color:#BFE0DD;}
+.callout.info{background:var(--primary-tint);border-color:#BFE0DD;border-left-color:var(--primary);}
 .callout .ico-badge{width:30px;height:30px;flex:0 0 auto;}
 
+/* ---------- Destaque numérico ---------- */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:1.6em 0;}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px 20px 16px;box-shadow:var(--shadow-sm);}
+.stat b{display:block;font-family:var(--font-display);font-size:1.7rem;font-weight:560;color:var(--primary);line-height:1.1;margin-bottom:4px;}
+.stat span{font-size:.9rem;color:var(--muted);line-height:1.45;display:block;}
+
 /* ---------- FAQ ---------- */
-.faq details{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);margin-bottom:12px;overflow:hidden;}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);margin-bottom:12px;overflow:hidden;transition:border-color .18s var(--ease),box-shadow .18s var(--ease);}
+.faq details:hover{border-color:#C7DEDB;}
+.faq details[open]{border-color:#BFE0DD;box-shadow:var(--shadow-sm);}
 .faq summary{cursor:pointer;list-style:none;padding:18px 22px;font-family:var(--font-body);font-weight:600;color:var(--ink);font-size:1.05rem;display:flex;justify-content:space-between;gap:16px;align-items:center;}
 .faq summary::-webkit-details-marker{display:none;}
 .faq summary::after{content:"";width:12px;height:12px;flex:0 0 auto;border-right:2px solid var(--primary);border-bottom:2px solid var(--primary);transform:rotate(45deg);transition:.2s;margin-top:-4px;}
@@ -202,14 +231,19 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .faq .faq-body p:last-child{margin-bottom:0;}
 
 /* ---------- Cirurgiões / WhatsApp ---------- */
-.surgeon{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);color:#fff;border-radius:24px;padding:clamp(32px,5vw,52px);box-shadow:var(--shadow);}
+.surgeon{position:relative;overflow:hidden;background:
+  radial-gradient(420px 220px at 106% -20%, rgba(217,145,43,.16), transparent 60%),
+  radial-gradient(560px 300px at -14% 118%, rgba(127,196,194,.14), transparent 55%),
+  linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);
+  color:#fff;border-radius:24px;padding:clamp(32px,5vw,52px);box-shadow:var(--shadow-lg);}
+.surgeon::after{content:"";position:absolute;right:-90px;bottom:-120px;width:300px;height:300px;border-radius:50%;border:40px solid rgba(234,243,242,.05);pointer-events:none;}
 .surgeon h2{color:#fff;}
-.surgeon p{color:#D6ECEA;}
-.surgeon .btn-wa{margin-top:6px;}
+.surgeon p{color:#D6ECEA;position:relative;z-index:1;}
+.surgeon .btn-wa{margin-top:6px;position:relative;z-index:1;}
 .surgeon .fineprint{font-size:.85rem;color:#A9D2CF;margin-top:18px;margin-bottom:0;}
 
 /* ---------- Resumo (key takeaways) ---------- */
-.takeaways{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);padding:26px 28px;}
+.takeaways{background:linear-gradient(180deg,#FFFDF9,var(--surface) 55%);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow-sm);}
 .takeaways h2{font-size:1.3rem;margin-top:0;}
 .takeaways ul li::before{background:var(--accent);}
 
@@ -223,10 +257,11 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .crumbs{font-size:.86rem;color:var(--muted);margin-bottom:14px;}
 .crumbs a{color:var(--muted);}
 .crumbs a:hover{color:var(--primary);}
-.pill{display:inline-block;background:var(--primary-tint);color:var(--primary-dark);font-size:.78rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:18px;}
+.pill{display:inline-block;background:var(--surface);color:var(--primary-dark);font-size:.78rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:5px 13px;border-radius:999px;margin-bottom:18px;border:1px solid #BFE0DD;box-shadow:var(--shadow-sm);}
 
 /* ---------- Rodapé ---------- */
-.site-footer{background:var(--ink);color:#C6D6D4;padding:clamp(40px,5vw,64px) 0 30px;font-size:.94rem;}
+.site-footer{position:relative;background:linear-gradient(180deg,#16403D,var(--ink) 30%);color:#C6D6D4;padding:clamp(40px,5vw,64px) 0 30px;font-size:.94rem;}
+.site-footer::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),#7FC4C2 55%,var(--accent));opacity:.85;}
 .site-footer a{color:#C6D6D4;}
 .site-footer a:hover{color:#fff;}
 .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;}
@@ -234,23 +269,31 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .footer-grid ul{list-style:none;margin:0;padding:0;}
 .footer-grid li{margin-bottom:9px;}
 .footer-brand{display:flex;align-items:center;gap:10px;color:#fff;font-family:var(--font-display);font-size:1.15rem;margin-bottom:14px;}
-.footer-brand .mark{width:30px;height:30px;}
+.footer-brand .mark{width:30px;height:30px;border-radius:8px;}
 .disclaimer{font-size:.82rem;color:#92A8A5;line-height:1.6;}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:34px;padding-top:22px;font-size:.82rem;color:#92A8A5;display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;}
 @media(max-width:720px){.footer-grid{grid-template-columns:1fr;gap:26px;}}
 
 /* ---------- Animação de entrada ---------- */
-.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease), transform .6s var(--ease);}
 .reveal.in{opacity:1;transform:none;}
 
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
   .reveal{opacity:1;transform:none;transition:none;}
-  .btn:hover,.card:hover{transform:none;}
+  .btn:hover,.card:hover,.toc li a:hover{transform:none;}
+  .readbar{display:none;}
 }
 
 /* ---------- Foco acessível ---------- */
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px;}
+
+/* ---------- Impressão ---------- */
+@media print{
+  .site-header,.site-footer,.surgeon,.nav-toggle,.readbar{display:none !important;}
+  body{background:#fff;font-size:12pt;}
+  .reveal{opacity:1;transform:none;}
+}
 
 /* ---------- Utilidades ---------- */
 .mt0{margin-top:0;}
@@ -292,7 +335,7 @@ section{padding:clamp(46px,7vw,86px) 0;}
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="index.html">
-      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0F5B5E"/><path d="M14 18 a18 18 0 0 1 18 18" fill="none" stroke="#EAF3F2" stroke-width="6" stroke-linecap="round"/><path d="M12 30 a20 20 0 0 1 20 -20" fill="none" stroke="#7FC4C2" stroke-width="4" stroke-linecap="round" opacity=".55"/><circle cx="38" cy="30" r="11" fill="#EAF3F2"/><circle cx="38" cy="30" r="11" fill="none" stroke="#D9912B" stroke-width="2.5"/><path d="M44 38 q6 7 4 16" fill="none" stroke="#EAF3F2" stroke-width="6" stroke-linecap="round"/></svg>
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0F5B5E"/><path d="M11 32 a22 22 0 0 1 22 -22" fill="none" stroke="#7FC4C2" stroke-width="4.5" stroke-linecap="round" opacity=".5"/><path d="M15 30 a17 17 0 0 1 17 -17" fill="none" stroke="#EAF3F2" stroke-width="7" stroke-linecap="round"/><circle cx="39" cy="31" r="12.5" fill="#F3FAF9"/><circle cx="39" cy="31" r="12.5" fill="none" stroke="#D9912B" stroke-width="3"/><path d="M45.5 41.5 q6.5 7.5 4 15.5" fill="none" stroke="#EAF3F2" stroke-width="7" stroke-linecap="round"/></svg>
       Quadril <b>Curitiba</b>
     </a>
     <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-nav">
@@ -300,8 +343,9 @@ section{padding:clamp(46px,7vw,86px) 0;}
     </button>
     <nav class="nav" id="site-nav" aria-label="Principal">
       <a href="protese-de-quadril.html">Prótese</a>
+      <a href="quanto-custa-protese-de-quadril.html">Custos</a>
       <a href="recuperacao-protese-de-quadril.html">Recuperação</a>
-      <a href="artrose-de-quadril.html">Artrose</a>
+      <a href="artrose-de-quadril.html">Coxartrose</a>
       <a href="dor-no-quadril.html">Dor no quadril</a>
       <a href="cirurgioes-curitiba.html">Cirurgiões</a>
     </nav>
@@ -458,10 +502,17 @@ section{padding:clamp(46px,7vw,86px) 0;}
       </article>
       <article class="card linked reveal">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-        <h3>Artrose de quadril</h3>
-        <p>Sintomas, diagnóstico e tratamento da coxartrose — do conservador ao momento de operar.</p>
-        <span class="more">Entender a artrose →</span>
-        <a class="stretch" href="artrose-de-quadril.html" aria-label="Artrose de quadril"></a>
+        <h3>Coxartrose (artrose)</h3>
+        <p>Sintomas, graus e tratamento da artrose do quadril — do conservador ao momento de operar.</p>
+        <span class="more">Entender a coxartrose →</span>
+        <a class="stretch" href="artrose-de-quadril.html" aria-label="Coxartrose, a artrose de quadril"></a>
+      </article>
+      <article class="card linked reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M8 15h4"/></svg></div>
+        <h3>Quanto custa a prótese</h3>
+        <p>SUS, plano de saúde e particular: as faixas de valores no Brasil e o que entra na conta, com dados de estudos.</p>
+        <span class="more">Ver os custos →</span>
+        <a class="stretch" href="quanto-custa-protese-de-quadril.html" aria-label="Quanto custa a prótese de quadril"></a>
       </article>
       <article class="card linked reveal">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.2"/></svg></div>
@@ -482,13 +533,22 @@ section{padding:clamp(46px,7vw,86px) 0;}
     <h2>Artigos explicados de forma simples</h2>
     <p class="muted">A ciência do quadril, traduzida para quem não é médico.</p>
   </div>
-  <article class="card linked reveal" style="max-width:560px;">
-    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16M4 12h16M4 19h10"/></svg></div>
-    <h3>Prótese de quadril vale a pena?</h3>
-    <p>Um estudo acompanhou 346 pacientes por 5 anos. Veja o que mudou na dor e na qualidade de vida de quem operou.</p>
-    <span class="more">Ler o artigo →</span>
-    <a class="stretch" href="protese-de-quadril-vale-a-pena.html" aria-label="Prótese de quadril vale a pena"></a>
-  </article>
+  <div class="cards" style="max-width:900px;">
+    <article class="card linked reveal">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16M4 12h16M4 19h10"/></svg></div>
+      <h3>Prótese de quadril vale a pena?</h3>
+      <p>Um estudo acompanhou 346 pacientes por 5 anos. Veja o que mudou na dor e na qualidade de vida de quem operou.</p>
+      <span class="more">Ler o artigo →</span>
+      <a class="stretch" href="protese-de-quadril-vale-a-pena.html" aria-label="Prótese de quadril vale a pena"></a>
+    </article>
+    <article class="card linked reveal">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M8 15h4"/></svg></div>
+      <h3>Quanto custa uma prótese de quadril?</h3>
+      <p>SUS, convênio e particular: as faixas reais de valores no Brasil, com dados de dois estudos científicos brasileiros.</p>
+      <span class="more">Ler o artigo →</span>
+      <a class="stretch" href="quanto-custa-protese-de-quadril.html" aria-label="Quanto custa uma prótese de quadril"></a>
+    </article>
+  </div>
 </div></section>
 
 <!-- CIRURGIÕES -->
@@ -557,7 +617,7 @@ section{padding:clamp(46px,7vw,86px) 0;}
     <div class="footer-grid">
       <div>
         <div class="footer-brand">
-          <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0F5B5E"/><circle cx="38" cy="30" r="11" fill="#EAF3F2"/><path d="M14 18 a18 18 0 0 1 18 18" fill="none" stroke="#EAF3F2" stroke-width="6" stroke-linecap="round"/><path d="M44 38 q6 7 4 16" fill="none" stroke="#EAF3F2" stroke-width="6" stroke-linecap="round"/></svg>
+          <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0F5B5E"/><path d="M11 32 a22 22 0 0 1 22 -22" fill="none" stroke="#7FC4C2" stroke-width="4.5" stroke-linecap="round" opacity=".5"/><path d="M15 30 a17 17 0 0 1 17 -17" fill="none" stroke="#EAF3F2" stroke-width="7" stroke-linecap="round"/><circle cx="39" cy="31" r="12.5" fill="#F3FAF9"/><circle cx="39" cy="31" r="12.5" fill="none" stroke="#D9912B" stroke-width="3"/><path d="M45.5 41.5 q6.5 7.5 4 15.5" fill="none" stroke="#EAF3F2" stroke-width="7" stroke-linecap="round"/></svg>
           Quadril Curitiba
         </div>
         <p class="disclaimer">Conteúdo de caráter exclusivamente informativo e educativo. Não substitui a consulta, o diagnóstico ou o tratamento por um médico. Em caso de dor ou sintomas, procure um ortopedista.</p>
@@ -566,8 +626,9 @@ section{padding:clamp(46px,7vw,86px) 0;}
         <h4>Temas</h4>
         <ul>
           <li><a href="protese-de-quadril.html">Prótese de quadril</a></li>
+          <li><a href="quanto-custa-protese-de-quadril.html">Quanto custa a prótese</a></li>
           <li><a href="recuperacao-protese-de-quadril.html">Recuperação</a></li>
-          <li><a href="artrose-de-quadril.html">Artrose de quadril</a></li>
+          <li><a href="artrose-de-quadril.html">Coxartrose (artrose)</a></li>
           <li><a href="dor-no-quadril.html">Dor no quadril</a></li>
         </ul>
       </div>
@@ -621,6 +682,23 @@ section{padding:clamp(46px,7vw,86px) 0;}
   } else {
     els.forEach(function (el) { el.classList.add('in'); });
   }
+
+  // Barra de progresso de leitura
+  var bar = document.createElement('div');
+  bar.className = 'readbar';
+  bar.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(bar);
+  var ticking = false;
+  function paint() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(paint); }
+  }, { passive: true });
+  paint();
 
   // Ano automático no rodapé
   var y = document.querySelectorAll('[data-year]');

@@ -1,11 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Quadril Curitiba">
-  <rect width="64" height="64" rx="14" fill="#0F5B5E"/>
-  <!-- acetábulo (soquete) -->
-  <path d="M14 18 a18 18 0 0 1 18 18" fill="none" stroke="#EAF3F2" stroke-width="6" stroke-linecap="round"/>
-  <path d="M12 30 a20 20 0 0 1 20 -20" fill="none" stroke="#7FC4C2" stroke-width="4" stroke-linecap="round" opacity=".55"/>
-  <!-- cabeça femoral (bola) -->
-  <circle cx="38" cy="30" r="11" fill="#EAF3F2"/>
-  <circle cx="38" cy="30" r="11" fill="none" stroke="#D9912B" stroke-width="2.5" opacity=".9"/>
-  <!-- haste femoral -->
-  <path d="M44 38 q6 7 4 16" fill="none" stroke="#EAF3F2" stroke-width="6" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#116468"/>
+      <stop offset="1" stop-color="#0B4447"/>
+    </linearGradient>
+    <radialGradient id="ball" cx="0.35" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#DCEBEA"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
+  <path d="M11 32 a22 22 0 0 1 22 -22" fill="none" stroke="#7FC4C2" stroke-width="4.5" stroke-linecap="round" opacity=".5"/>
+  <path d="M15 30 a17 17 0 0 1 17 -17" fill="none" stroke="#EAF3F2" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="39" cy="31" r="12.5" fill="url(#ball)"/>
+  <circle cx="39" cy="31" r="12.5" fill="none" stroke="#D9912B" stroke-width="3"/>
+  <path d="M45.5 41.5 q6.5 7.5 4 15.5" fill="none" stroke="#EAF3F2" stroke-width="7" stroke-linecap="round"/>
 </svg>

@@ -32,6 +32,23 @@
     els.forEach(function (el) { el.classList.add('in'); });
   }
 
+  // Barra de progresso de leitura
+  var bar = document.createElement('div');
+  bar.className = 'readbar';
+  bar.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(bar);
+  var ticking = false;
+  function paint() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(paint); }
+  }, { passive: true });
+  paint();
+
   // Ano automático no rodapé
   var y = document.querySelectorAll('[data-year]');
   y.forEach(function (n) { n.textContent = new Date().getFullYear(); });
