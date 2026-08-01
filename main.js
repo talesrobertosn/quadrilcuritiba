@@ -16,6 +16,25 @@
     });
   }
 
+  // Cabeçalho: sombra ao rolar
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var paintHeader = function () {
+      header.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    window.addEventListener('scroll', paintHeader, { passive: true });
+    paintHeader();
+  }
+
+  // Nav: destaca a página atual
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav a').forEach(function (a) {
+    if (a.getAttribute('href') === here) {
+      a.classList.add('active');
+      a.setAttribute('aria-current', 'page');
+    }
+  });
+
   // Animação de entrada
   var els = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && els.length) {

@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Quadril Curitiba">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#116468"/>
-      <stop offset="1" stop-color="#0B4447"/>
+      <stop offset="0" stop-color="#116468"></stop>
+      <stop offset="1" stop-color="#0B4447"></stop>
     </linearGradient>
     <radialGradient id="ball" cx="0.35" cy="0.3" r="0.9">
-      <stop offset="0" stop-color="#FFFFFF"/>
-      <stop offset="1" stop-color="#DCEBEA"/>
+      <stop offset="0" stop-color="#FFFFFF"></stop>
+      <stop offset="1" stop-color="#DCEBEA"></stop>
     </radialGradient>
   </defs>
-  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
-  <path d="M11 32 a22 22 0 0 1 22 -22" fill="none" stroke="#7FC4C2" stroke-width="4.5" stroke-linecap="round" opacity=".5"/>
-  <path d="M15 30 a17 17 0 0 1 17 -17" fill="none" stroke="#EAF3F2" stroke-width="7" stroke-linecap="round"/>
-  <circle cx="39" cy="31" r="12.5" fill="url(#ball)"/>
-  <circle cx="39" cy="31" r="12.5" fill="none" stroke="#D9912B" stroke-width="3"/>
-  <path d="M45.5 41.5 q6.5 7.5 4 15.5" fill="none" stroke="#EAF3F2" stroke-width="7" stroke-linecap="round"/>
+  <rect width="64" height="64" rx="15" fill="url(#bg)"></rect>
+  <path d="M11 32 a22 22 0 0 1 22 -22" fill="none" stroke="#7FC4C2" stroke-width="4.5" stroke-linecap="round" opacity=".5"></path>
+  <path d="M15 30 a17 17 0 0 1 17 -17" fill="none" stroke="#EAF3F2" stroke-width="7" stroke-linecap="round"></path>
+  <circle cx="39" cy="31" r="12.5" fill="url(#ball)"></circle>
+  <circle cx="39" cy="31" r="12.5" fill="none" stroke="#D9912B" stroke-width="3"></circle>
+  <path d="M45.5 41.5 q6.5 7.5 4 15.5" fill="none" stroke="#EAF3F2" stroke-width="7" stroke-linecap="round"></path>
 </svg>

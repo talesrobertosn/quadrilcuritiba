@@ -83,7 +83,8 @@ h3{font-size:clamp(1.2rem,2.2vw,1.45rem);}
 p{margin:0 0 1.1em;}
 strong{color:var(--ink);font-weight:600;}
 .lead{font-size:clamp(1.1rem,2vw,1.3rem);color:var(--body);line-height:1.6;text-wrap:pretty;}
-.eyebrow{font-family:var(--font-body);font-weight:600;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);margin:0 0 .9rem;}
+.eyebrow{font-family:var(--font-body);font-weight:600;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);margin:0 0 .9rem;display:flex;align-items:center;gap:8px;}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);flex:0 0 auto;}
 
 /* ---------- Layout ---------- */
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
@@ -97,23 +98,35 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .readbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:70;background:linear-gradient(90deg,var(--accent),#E7B25C);border-radius:0 2px 2px 0;pointer-events:none;transition:width .08s linear;}
 
 /* ---------- Cabeçalho ---------- */
-.site-header{position:sticky;top:0;z-index:50;background:rgba(246,249,249,.82);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line);}
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;height:66px;}
-.brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;font-size:1.16rem;color:var(--ink);letter-spacing:-.01em;}
-.brand:hover{text-decoration:none;}
-.brand .mark{width:34px;height:34px;flex:0 0 auto;border-radius:9px;box-shadow:0 2px 8px rgba(15,91,94,.22);}
+.site-header{position:sticky;top:0;z-index:50;background:rgba(246,249,249,.86);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(16,48,46,.03),0 6px 20px rgba(16,48,46,.05);transition:box-shadow .25s var(--ease),background .25s var(--ease);}
+.site-header.scrolled{box-shadow:0 4px 24px rgba(16,48,46,.11);background:rgba(246,249,249,.97);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:22px;height:72px;}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;font-size:1.2rem;color:var(--ink);letter-spacing:-.01em;transition:opacity .15s var(--ease);flex:0 0 auto;}
+.brand:hover{text-decoration:none;opacity:.85;}
+.brand .mark{width:36px;height:36px;flex:0 0 auto;border-radius:10px;box-shadow:0 3px 10px rgba(15,91,94,.26);transition:transform .3s var(--ease);}
+.brand:hover .mark{transform:rotate(-8deg);}
 .brand b{color:var(--primary);font-weight:600;}
-.nav{display:flex;align-items:center;gap:4px;}
-.nav a{color:var(--body);font-size:.93rem;font-weight:500;padding:8px 9px;white-space:nowrap;border-radius:9px;transition:background .15s var(--ease),color .15s var(--ease);}
+.nav{display:flex;align-items:center;gap:3px;border-left:1px solid var(--line);padding-left:20px;margin-left:2px;}
+.nav a{position:relative;color:var(--body);font-size:.93rem;font-weight:600;padding:10px 13px;white-space:nowrap;border-radius:9px;transition:background .15s var(--ease),color .15s var(--ease);}
+.nav a::after{content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .2s var(--ease);}
 .nav a:hover{background:var(--mist);text-decoration:none;color:var(--ink);}
-.nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:9px;width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer;color:var(--ink);}
+.nav a:hover::after{transform:scaleX(1);}
+.nav a.active{color:var(--primary-dark);font-weight:600;background:var(--primary-tint);}
+.nav a.active::after{transform:scaleX(1);background:var(--primary);}
+.nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:9px;width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer;color:var(--ink);transition:border-color .15s var(--ease),background .15s var(--ease);}
+.nav-toggle:hover{background:var(--mist);border-color:#CDE2DF;}
 .nav-toggle svg{width:22px;height:22px;}
+.nav-toggle line{transition:transform .25s var(--ease),opacity .2s var(--ease);transform-origin:center;}
+.nav-toggle[aria-expanded="true"] line:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.nav-toggle[aria-expanded="true"] line:nth-child(2){opacity:0;}
+.nav-toggle[aria-expanded="true"] line:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
 
 @media(max-width:1140px){
   .nav-toggle{display:flex;}
-  .nav{position:absolute;top:66px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 14px 16px;gap:2px;box-shadow:var(--shadow);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.18s var(--ease);}
+  .nav{position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 14px 16px;gap:2px;box-shadow:var(--shadow);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.18s var(--ease);}
   .nav.open{transform:none;opacity:1;pointer-events:auto;}
   .nav a{padding:12px 12px;border-radius:10px;}
+  .nav a::after{display:none;}
 }
 
 /* ---------- Hero ---------- */
@@ -138,16 +151,18 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .section-tint::after{content:"";position:absolute;right:-140px;top:-140px;width:420px;height:420px;border-radius:50%;border:56px solid rgba(15,91,94,.05);pointer-events:none;}
 
 /* ---------- Botões ---------- */
-.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-body);font-weight:600;font-size:1rem;padding:13px 22px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .16s var(--ease),box-shadow .16s var(--ease),background .16s var(--ease);}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-body);font-weight:600;font-size:1rem;padding:13px 22px;border-radius:999px;border:1px solid transparent;cursor:pointer;letter-spacing:.01em;transition:transform .16s var(--ease),box-shadow .16s var(--ease),background .16s var(--ease),border-color .16s var(--ease);}
 .btn:hover{text-decoration:none;transform:translateY(-2px);}
-.btn:active{transform:translateY(0);}
+.btn:active{transform:translateY(0) scale(.98);}
 .btn-primary{background:linear-gradient(180deg,#136B6E,var(--primary) 55%,var(--primary-dark));color:#fff;box-shadow:var(--shadow-sm),inset 0 1px 0 rgba(255,255,255,.16);}
 .btn-primary:hover{box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.16);color:#fff;}
-.btn-ghost{background:transparent;color:var(--primary);border-color:var(--primary);}
-.btn-ghost:hover{background:var(--primary-tint);}
+.btn-primary:active{box-shadow:var(--shadow-sm),inset 0 1px 0 rgba(255,255,255,.12);}
+.btn-ghost{background:var(--surface);color:var(--primary);border-color:var(--primary);box-shadow:var(--shadow-sm);}
+.btn-ghost:hover{background:var(--primary-tint);border-color:var(--primary-dark);}
 .btn-mail{background:linear-gradient(180deg,#F6C86A,var(--mail));color:#40290A;box-shadow:0 4px 16px rgba(217,145,43,.30),inset 0 1px 0 rgba(255,255,255,.28);}
 .btn-mail:hover{background:linear-gradient(180deg,#F8D07E,#E9AE3C);color:#40290A;box-shadow:0 8px 22px rgba(217,145,43,.36),inset 0 1px 0 rgba(255,255,255,.28);}
-.btn svg{width:19px;height:19px;}
+.btn svg{width:19px;height:19px;transition:transform .2s var(--ease);}
+.btn:hover svg{transform:translateX(2px);}
 .btn-row{display:flex;flex-wrap:wrap;gap:13px;}
 
 /* ---------- Índice navegável ---------- */
@@ -197,8 +212,11 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .card:hover .more::after{transform:translateX(4px);}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;box-shadow:var(--shadow-sm);transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease);display:flex;flex-direction:column;}
 .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:#CDE2DF;}
-.card .ico{width:42px;height:42px;border-radius:11px;background:linear-gradient(160deg,var(--primary-tint),#D3E9E6);display:flex;align-items:center;justify-content:center;margin-bottom:15px;color:var(--primary);}
+.card .ico{width:42px;height:42px;border-radius:11px;background:linear-gradient(160deg,var(--primary-tint),#D3E9E6);display:flex;align-items:center;justify-content:center;margin-bottom:15px;color:var(--primary);transition:transform .25s var(--ease);}
 .card .ico svg{width:23px;height:23px;}
+.card:hover .ico{transform:scale(1.06) rotate(-4deg);}
+.card .ico.ico-accent{background:linear-gradient(160deg,var(--accent-soft),#F3DBA9);color:#9C6A1E;}
+.card .ico.ico-alert{background:linear-gradient(160deg,var(--alert-soft),#F3D2C6);color:var(--alert);}
 .card h3{font-size:1.18rem;margin-bottom:.4em;}
 .card p{font-size:.98rem;color:var(--muted);margin-bottom:1em;}
 .card .more{margin-top:auto;font-weight:600;font-size:.95rem;color:var(--primary);display:inline-flex;align-items:center;gap:7px;}
@@ -375,6 +393,11 @@ section{padding:clamp(46px,7vw,86px) 0;}
 <h2 id="mobilizacao" class="reveal">Por que levantar cedo faz diferença</h2>
 <p class="reveal">Pode parecer contraintuitivo, mas começar a se mover já nas primeiras 24 horas após a cirurgia traz benefícios consistentes. Revisões da literatura associam a mobilização precoce a menos complicações, internação mais curta, menos dor, mais capacidade de caminhar, melhor qualidade de vida e menor risco de trombose, sem aumentar o risco de problemas no implante. Por isso a fisioterapia começa tão cedo. A reabilitação, aliás, é parte do investimento da cirurgia: veja <a href="quanto-custa-protese-de-quadril.html">o que entra na conta de uma prótese de quadril</a>.</p>
 
+<figure class="post-fig reveal">
+  <img src="assets/idosa-fisioterapia-quadril.jpg" alt="Ilustração em estilo cartoon de uma idosa sorridente fazendo exercício de fisioterapia com faixa elástica, apoiada em uma barra, em uma sala de reabilitação" loading="lazy" width="1200" height="654">
+  <figcaption>A fisioterapia começa cedo e segue por meses; o ganho de função é mais rápido nos três primeiros meses. Imagem ilustrativa.</figcaption>
+</figure>
+
 <h2 id="dirigir" class="reveal">Quando posso voltar a dirigir</h2>
 <p class="reveal">O prazo típico é de 2 a 4 semanas, mas depende de fatores como ter parado os analgésicos fortes e conseguir mover o pé do acelerador para o freio com firmeza. Por isso, voltar a dirigir costuma ser mais rápido quando o quadril operado é o esquerdo (cerca de 2 semanas) do que o direito (cerca de 4 semanas). Confirme com o seu médico.</p>
 
@@ -449,6 +472,25 @@ section{padding:clamp(46px,7vw,86px) 0;}
       }
     });
   }
+
+  // Cabeçalho: sombra ao rolar
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var paintHeader = function () {
+      header.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    window.addEventListener('scroll', paintHeader, { passive: true });
+    paintHeader();
+  }
+
+  // Nav: destaca a página atual
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav a').forEach(function (a) {
+    if (a.getAttribute('href') === here) {
+      a.classList.add('active');
+      a.setAttribute('aria-current', 'page');
+    }
+  });
 
   // Animação de entrada
   var els = document.querySelectorAll('.reveal');
