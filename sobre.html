@@ -101,13 +101,14 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .site-header{position:sticky;top:0;z-index:50;background:rgba(246,249,249,.86);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(16,48,46,.03),0 6px 20px rgba(16,48,46,.05);transition:box-shadow .25s var(--ease),background .25s var(--ease);}
 .site-header.scrolled{box-shadow:0 4px 24px rgba(16,48,46,.11);background:rgba(246,249,249,.97);}
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:22px;height:72px;}
+.site-header .wrap{max-width:1240px;}
 .brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;font-size:1.2rem;color:var(--ink);letter-spacing:-.01em;transition:opacity .15s var(--ease);flex:0 0 auto;}
 .brand:hover{text-decoration:none;opacity:.85;}
 .brand .mark{width:36px;height:36px;flex:0 0 auto;border-radius:10px;box-shadow:0 3px 10px rgba(15,91,94,.26);transition:transform .3s var(--ease);}
 .brand:hover .mark{transform:rotate(-8deg);}
 .brand b{color:var(--primary);font-weight:600;}
-.nav{display:flex;align-items:center;gap:3px;border-left:1px solid var(--line);padding-left:20px;margin-left:2px;}
-.nav a{position:relative;color:var(--body);font-size:.93rem;font-weight:600;padding:10px 13px;white-space:nowrap;border-radius:9px;transition:background .15s var(--ease),color .15s var(--ease);}
+.nav{display:flex;align-items:center;gap:1px;border-left:1px solid var(--line);padding-left:14px;margin-left:2px;}
+.nav a{position:relative;color:var(--body);font-size:.92rem;font-weight:600;padding:10px 10px;white-space:nowrap;border-radius:9px;transition:background .15s var(--ease),color .15s var(--ease);}
 .nav a::after{content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .2s var(--ease);}
 .nav a:hover{background:var(--mist);text-decoration:none;color:var(--ink);}
 .nav a:hover::after{transform:scaleX(1);}
@@ -121,11 +122,11 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .nav-toggle[aria-expanded="true"] line:nth-child(2){opacity:0;}
 .nav-toggle[aria-expanded="true"] line:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
 
-@media(max-width:1140px){
+@media(max-width:1220px){
   .nav-toggle{display:flex;}
-  .nav{position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 14px 16px;gap:2px;box-shadow:var(--shadow);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.18s var(--ease);}
+  .nav{position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 14px 16px;gap:2px;box-shadow:var(--shadow);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.18s var(--ease);}
   .nav.open{transform:none;opacity:1;pointer-events:auto;}
-  .nav a{padding:12px 12px;border-radius:10px;}
+  .nav a{padding:12px 12px;border-radius:10px;font-size:.96rem;}
   .nav a::after{display:none;}
 }
 
@@ -188,12 +189,14 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .prose a:hover{border-bottom-color:var(--primary);text-decoration:none;}
 
 /* ---------- Figuras ---------- */
+.revdate{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;color:var(--muted);margin-top:20px;letter-spacing:.01em;}
+.revdate svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;}
 .post-fig{margin:2em 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:var(--surface);}
 .post-fig img{width:100%;display:block;}
 .post-fig figcaption{font-size:.88rem;color:var(--muted);padding:12px 18px;border-top:1px solid var(--line);background:linear-gradient(180deg,#FDFEFE,var(--surface));}
 
 /* ---------- Trilhas rápidas ---------- */
-.paths{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:34px;}
+.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(186px,1fr));gap:12px;margin-bottom:34px;}
 .path{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:12px 20px 12px 14px;box-shadow:var(--shadow-sm);color:var(--ink);font-weight:600;font-size:.98rem;transition:transform .18s var(--ease),box-shadow .18s var(--ease),border-color .18s var(--ease);}
 .path:hover{text-decoration:none;transform:translateY(-2px);box-shadow:var(--shadow);border-color:#BFE0DD;color:var(--primary);}
 .path .n{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--primary-tint);color:var(--primary);display:grid;place-items:center;font-family:var(--font-display);font-size:.92rem;font-weight:600;}
@@ -344,6 +347,12 @@ section{padding:clamp(46px,7vw,86px) 0;}
 
 </style>
 
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Sobre o Quadril Curitiba","inLanguage":"pt-BR","url":"https://quadrilcuritiba.com.br/sobre.html","dateModified":"2026-08-16","publisher":{"@type":"Organization","name":"Quadril Curitiba","url":"https://quadrilcuritiba.com.br/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://quadrilcuritiba.com.br/"},{"@type":"ListItem","position":2,"name":"Sobre o site","item":"https://quadrilcuritiba.com.br/sobre.html"}]}
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -356,10 +365,11 @@ section{padding:clamp(46px,7vw,86px) 0;}
       <a href="protese-de-quadril.html">Prótese</a>
       <a href="quanto-custa-protese-de-quadril.html">Custos</a>
       <a href="recuperacao-protese-de-quadril.html">Recuperação</a>
-      <a href="artrose-de-quadril.html">Coxartrose</a>
-      <a href="como-aliviar-dor-artrose-quadril.html">Aliviar a dor</a>
+      <a href="artrose-de-quadril.html">Artrose</a>
+      <a href="como-aliviar-dor-artrose-quadril.html">Aliviar dor</a>
       <a href="dor-no-quadril.html">Dor no quadril</a>
-      <a href="fratura-de-quadril-no-idoso.html">Fratura no idoso</a>
+      <a href="bursite-no-quadril.html">Bursite</a>
+      <a href="fratura-de-quadril-no-idoso.html">Fratura</a>
       <a href="cirurgioes-curitiba.html">Cirurgiões</a>
     </nav>
   </div>
@@ -394,6 +404,7 @@ section{padding:clamp(46px,7vw,86px) 0;}
           <li><a href="artrose-de-quadril.html">Coxartrose (artrose)</a></li>
           <li><a href="como-aliviar-dor-artrose-quadril.html">Como aliviar a dor</a></li>
           <li><a href="dor-no-quadril.html">Dor no quadril</a></li>
+          <li><a href="bursite-no-quadril.html">Bursite e tendinite no quadril</a></li>
           <li><a href="fratura-de-quadril-no-idoso.html">Fratura de quadril no idoso</a></li>
         </ul>
       </div>

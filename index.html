@@ -4,8 +4,8 @@
 <script>document.documentElement.classList.add("js");</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cirurgia do Quadril em Curitiba: guia completo (prótese, artrose e recuperação)</title>
-<meta name="description" content="Guia claro sobre cirurgia do quadril em Curitiba: quando é indicada, prótese de quadril, artroscopia, recuperação, riscos e como escolher o cirurgião. Conteúdo informativo baseado em evidência.">
+<title>Cirurgia do Quadril em Curitiba: Prótese, Artrose e Recuperação</title>
+<meta name="description" content="Guia de saúde do quadril: artrose, prótese, custos, recuperação, bursite e dor no quadril, em linguagem clara e baseado em evidência.">
 <link rel="canonical" href="https://quadrilcuritiba.com.br/">
 <meta name="robots" content="index,follow">
 
@@ -105,13 +105,14 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .site-header{position:sticky;top:0;z-index:50;background:rgba(246,249,249,.86);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(16,48,46,.03),0 6px 20px rgba(16,48,46,.05);transition:box-shadow .25s var(--ease),background .25s var(--ease);}
 .site-header.scrolled{box-shadow:0 4px 24px rgba(16,48,46,.11);background:rgba(246,249,249,.97);}
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:22px;height:72px;}
+.site-header .wrap{max-width:1240px;}
 .brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;font-size:1.2rem;color:var(--ink);letter-spacing:-.01em;transition:opacity .15s var(--ease);flex:0 0 auto;}
 .brand:hover{text-decoration:none;opacity:.85;}
 .brand .mark{width:36px;height:36px;flex:0 0 auto;border-radius:10px;box-shadow:0 3px 10px rgba(15,91,94,.26);transition:transform .3s var(--ease);}
 .brand:hover .mark{transform:rotate(-8deg);}
 .brand b{color:var(--primary);font-weight:600;}
-.nav{display:flex;align-items:center;gap:3px;border-left:1px solid var(--line);padding-left:20px;margin-left:2px;}
-.nav a{position:relative;color:var(--body);font-size:.93rem;font-weight:600;padding:10px 13px;white-space:nowrap;border-radius:9px;transition:background .15s var(--ease),color .15s var(--ease);}
+.nav{display:flex;align-items:center;gap:1px;border-left:1px solid var(--line);padding-left:14px;margin-left:2px;}
+.nav a{position:relative;color:var(--body);font-size:.92rem;font-weight:600;padding:10px 10px;white-space:nowrap;border-radius:9px;transition:background .15s var(--ease),color .15s var(--ease);}
 .nav a::after{content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .2s var(--ease);}
 .nav a:hover{background:var(--mist);text-decoration:none;color:var(--ink);}
 .nav a:hover::after{transform:scaleX(1);}
@@ -125,11 +126,11 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .nav-toggle[aria-expanded="true"] line:nth-child(2){opacity:0;}
 .nav-toggle[aria-expanded="true"] line:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
 
-@media(max-width:1140px){
+@media(max-width:1220px){
   .nav-toggle{display:flex;}
-  .nav{position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 14px 16px;gap:2px;box-shadow:var(--shadow);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.18s var(--ease);}
+  .nav{position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 14px 16px;gap:2px;box-shadow:var(--shadow);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.18s var(--ease);}
   .nav.open{transform:none;opacity:1;pointer-events:auto;}
-  .nav a{padding:12px 12px;border-radius:10px;}
+  .nav a{padding:12px 12px;border-radius:10px;font-size:.96rem;}
   .nav a::after{display:none;}
 }
 
@@ -192,12 +193,14 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .prose a:hover{border-bottom-color:var(--primary);text-decoration:none;}
 
 /* ---------- Figuras ---------- */
+.revdate{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;color:var(--muted);margin-top:20px;letter-spacing:.01em;}
+.revdate svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;}
 .post-fig{margin:2em 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:var(--surface);}
 .post-fig img{width:100%;display:block;}
 .post-fig figcaption{font-size:.88rem;color:var(--muted);padding:12px 18px;border-top:1px solid var(--line);background:linear-gradient(180deg,#FDFEFE,var(--surface));}
 
 /* ---------- Trilhas rápidas ---------- */
-.paths{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:34px;}
+.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(186px,1fr));gap:12px;margin-bottom:34px;}
 .path{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:12px 20px 12px 14px;box-shadow:var(--shadow-sm);color:var(--ink);font-weight:600;font-size:.98rem;transition:transform .18s var(--ease),box-shadow .18s var(--ease),border-color .18s var(--ease);}
 .path:hover{text-decoration:none;transform:translateY(-2px);box-shadow:var(--shadow);border-color:#BFE0DD;color:var(--primary);}
 .path .n{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--primary-tint);color:var(--primary);display:grid;place-items:center;font-family:var(--font-display);font-size:.92rem;font-weight:600;}
@@ -350,28 +353,13 @@ section{padding:clamp(46px,7vw,86px) 0;}
 
 <!-- Dados estruturados -->
 <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"MedicalWebPage",
-  "name":"Cirurgia do Quadril em Curitiba",
-  "description":"Guia informativo sobre cirurgia do quadril, prótese, artrose, recuperação e dor no quadril.",
-  "url":"https://quadrilcuritiba.com.br/",
-  "inLanguage":"pt-BR",
-  "about":{"@type":"MedicalCondition","name":"Doenças e cirurgia do quadril"},
-  "audience":{"@type":"Patient"}
-}
+{"@context":"https://schema.org","@type":"MedicalWebPage","name":"Cirurgia do Quadril em Curitiba","description":"Guia informativo sobre cirurgia do quadril, prótese, artrose, recuperação e dor no quadril.","url":"https://quadrilcuritiba.com.br/","inLanguage":"pt-BR","about":{"@type":"MedicalCondition","name":"Doenças e cirurgia do quadril"},"audience":{"@type":"Patient"},"dateModified":"2026-08-16","publisher":{"@type":"Organization","name":"Quadril Curitiba","url":"https://quadrilcuritiba.com.br/"}}
 </script>
 <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"Quando a cirurgia do quadril é indicada?","acceptedAnswer":{"@type":"Answer","text":"Em geral quando a dor é intensa, não melhora com remédios e fisioterapia e atrapalha dormir, trabalhar ou caminhar. A decisão é sempre individual e tomada com o ortopedista."}},
-    {"@type":"Question","name":"Toda dor no quadril precisa de cirurgia?","acceptedAnswer":{"@type":"Answer","text":"Não. A maioria das causas de dor no quadril é tratada sem cirurgia, com medicação, fisioterapia, perda de peso e ajuste de atividades. A cirurgia entra quando o tratamento conservador não resolve."}},
-    {"@type":"Question","name":"Quanto tempo dura uma prótese de quadril?","acceptedAnswer":{"@type":"Answer","text":"As próteses modernas têm alta durabilidade, com sobrevida acima de 95% em 10 anos e acima de 80% em 25 anos em estudos de acompanhamento. Muitas duram a vida toda."}},
-    {"@type":"Question","name":"A cirurgia do quadril pelo SUS é possível?","acceptedAnswer":{"@type":"Answer","text":"Sim. O SUS realiza cirurgia de prótese de quadril, em geral em hospitais de referência e universitários, mas costuma haver fila de espera conforme a gravidade e a disponibilidade de leitos."}}
-  ]
-}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quando a cirurgia do quadril é indicada?","acceptedAnswer":{"@type":"Answer","text":"Em geral, quando a dor é intensa, não melhora com remédios e fisioterapia e atrapalha dormir, trabalhar ou caminhar. A decisão é individual e tomada com o ortopedista, após avaliar exame e imagens."}},{"@type":"Question","name":"Toda dor no quadril precisa de cirurgia?","acceptedAnswer":{"@type":"Answer","text":"Não. A maioria das causas de dor no quadril é tratada sem cirurgia. A operação entra quando o tratamento conservador não resolve."}},{"@type":"Question","name":"Quanto tempo dura uma prótese de quadril?","acceptedAnswer":{"@type":"Answer","text":"As próteses modernas têm alta durabilidade, com sobrevida acima de 95% em 10 anos e acima de 80% em 25 anos em estudos de acompanhamento. Muitas duram a vida toda. Veja mais na página de prótese ."}},{"@type":"Question","name":"Dá para fazer pelo SUS?","acceptedAnswer":{"@type":"Answer","text":"Sim. O SUS realiza cirurgia de prótese de quadril, normalmente em hospitais de referência, mas costuma haver fila de espera conforme a gravidade do caso e a disponibilidade de leitos."}},{"@type":"Question","name":"O plano de saúde é obrigado a cobrir?","acceptedAnswer":{"@type":"Answer","text":"A artroplastia de quadril consta no rol da ANS e, havendo indicação médica, a cobertura da cirurgia, dos materiais e da internação é obrigatória pela Lei dos Planos de Saúde."}}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Quadril Curitiba","alternateName":"quadrilcuritiba.com.br","url":"https://quadrilcuritiba.com.br/","inLanguage":"pt-BR","description":"Guia informativo e gratuito sobre saúde do quadril para pacientes."}
 </script>
 </head>
 <body>
@@ -389,10 +377,11 @@ section{padding:clamp(46px,7vw,86px) 0;}
       <a href="protese-de-quadril.html">Prótese</a>
       <a href="quanto-custa-protese-de-quadril.html">Custos</a>
       <a href="recuperacao-protese-de-quadril.html">Recuperação</a>
-      <a href="artrose-de-quadril.html">Coxartrose</a>
-      <a href="como-aliviar-dor-artrose-quadril.html">Aliviar a dor</a>
+      <a href="artrose-de-quadril.html">Artrose</a>
+      <a href="como-aliviar-dor-artrose-quadril.html">Aliviar dor</a>
       <a href="dor-no-quadril.html">Dor no quadril</a>
-      <a href="fratura-de-quadril-no-idoso.html">Fratura no idoso</a>
+      <a href="bursite-no-quadril.html">Bursite</a>
+      <a href="fratura-de-quadril-no-idoso.html">Fratura</a>
       <a href="cirurgioes-curitiba.html">Cirurgiões</a>
     </nav>
   </div>
@@ -434,8 +423,9 @@ section{padding:clamp(46px,7vw,86px) 0;}
     <nav class="paths reveal" aria-label="Atalhos por situação">
       <a class="path" href="dor-no-quadril.html"><span class="n">1</span><span>Estou com dor no quadril</span></a>
       <a class="path" href="artrose-de-quadril.html"><span class="n">2</span><span>Recebi o diagnóstico de artrose</span></a>
-      <a class="path" href="protese-de-quadril.html"><span class="n">3</span><span>Estou pensando em operar</span></a>
-      <a class="path" href="recuperacao-protese-de-quadril.html"><span class="n">4</span><span>Já operei ou vou operar</span></a>
+      <a class="path" href="bursite-no-quadril.html"><span class="n">3</span><span>Dói na lateral do quadril</span></a>
+      <a class="path" href="protese-de-quadril.html"><span class="n">4</span><span>Estou pensando em operar</span></a>
+      <a class="path" href="recuperacao-protese-de-quadril.html"><span class="n">5</span><span>Já operei ou vou operar</span></a>
     </nav>
 
     <div class="cards cards-3">
@@ -488,6 +478,14 @@ section{padding:clamp(46px,7vw,86px) 0;}
         <a class="stretch" href="recuperacao-protese-de-quadril.html" aria-label="Recuperação após prótese"></a>
       </article>
       <article class="card linked reveal">
+        <div class="ico ico-accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v4"/><circle cx="12" cy="12" r="4.2"/><path d="M12 16.2V21"/><path d="M4.6 8.2 8 10.1"/><path d="M19.4 8.2 16 10.1"/></svg></div>
+        <span class="tag">Dor lateral</span>
+        <h3>Bursite e tendinite no quadril</h3>
+        <p>Dói na lateral e não dá para dormir daquele lado? Na maioria das vezes não é bursite: é tendinite dos glúteos, e isso muda o tratamento.</p>
+        <span class="more">Entender a dor lateral</span>
+        <a class="stretch" href="bursite-no-quadril.html" aria-label="Bursite e tendinite no quadril"></a>
+      </article>
+      <article class="card linked reveal">
         <div class="ico ico-alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4.5 19.5l6-6"/><path d="M13.5 10.5l6-6"/><path d="M9.5 8.5l6 7"/><circle cx="12" cy="12" r="1.6"/></svg></div>
         <span class="tag">Urgência</span>
         <h3>Fratura de quadril no idoso</h3>
@@ -535,6 +533,7 @@ section{padding:clamp(46px,7vw,86px) 0;}
       <li><strong>Necrose avascular:</strong> quando a circulação para a cabeça do fêmur diminui e o osso sofre.</li>
       <li><strong>Artrite reumatoide e artrose pós-trauma:</strong> outras causas de dano articular progressivo.</li>
     </ul>
+    <p class="reveal">Nem tudo que dói no quadril vem de dentro da articulação, e essa é uma confusão frequente. A dor na lateral, que piora ao deitar daquele lado, quase sempre é <a href="bursite-no-quadril.html">bursite ou tendinite dos tendões glúteos</a>, um problema que raramente precisa de cirurgia e que tem tratamento com boa evidência.</p>
 
     <h2 id="preciso" class="reveal">Como saber se preciso de cirurgia</h2>
     <p class="reveal">Um ponto importante e que tranquiliza muita gente: a maior parte das dores no quadril não precisa de cirurgia. O caminho começa pelo tratamento conservador &mdash; medicação para dor, fisioterapia, controle do peso e ajuste de atividades. A cirurgia costuma ser considerada quando:</p>
@@ -697,6 +696,7 @@ section{padding:clamp(46px,7vw,86px) 0;}
           <li><a href="artrose-de-quadril.html">Coxartrose (artrose)</a></li>
           <li><a href="como-aliviar-dor-artrose-quadril.html">Como aliviar a dor</a></li>
           <li><a href="dor-no-quadril.html">Dor no quadril</a></li>
+          <li><a href="bursite-no-quadril.html">Bursite e tendinite no quadril</a></li>
           <li><a href="fratura-de-quadril-no-idoso.html">Fratura de quadril no idoso</a></li>
         </ul>
       </div>

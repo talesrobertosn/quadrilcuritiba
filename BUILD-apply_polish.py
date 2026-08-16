@@ -15,10 +15,11 @@ NAV_NEW = '''<nav class="nav" id="site-nav" aria-label="Principal">
       <a href="protese-de-quadril.html">Prótese</a>
       <a href="quanto-custa-protese-de-quadril.html">Custos</a>
       <a href="recuperacao-protese-de-quadril.html">Recuperação</a>
-      <a href="artrose-de-quadril.html">Coxartrose</a>
-      <a href="como-aliviar-dor-artrose-quadril.html">Aliviar a dor</a>
+      <a href="artrose-de-quadril.html">Artrose</a>
+      <a href="como-aliviar-dor-artrose-quadril.html">Aliviar dor</a>
       <a href="dor-no-quadril.html">Dor no quadril</a>
-      <a href="fratura-de-quadril-no-idoso.html">Fratura no idoso</a>
+      <a href="bursite-no-quadril.html">Bursite</a>
+      <a href="fratura-de-quadril-no-idoso.html">Fratura</a>
       <a href="cirurgioes-curitiba.html">Cirurgiões</a>
     </nav>'''
 
@@ -30,6 +31,7 @@ FOOTER_TEMAS_NEW = '''<h4>Temas</h4>
           <li><a href="artrose-de-quadril.html">Coxartrose (artrose)</a></li>
           <li><a href="como-aliviar-dor-artrose-quadril.html">Como aliviar a dor</a></li>
           <li><a href="dor-no-quadril.html">Dor no quadril</a></li>
+          <li><a href="bursite-no-quadril.html">Bursite e tendinite no quadril</a></li>
           <li><a href="fratura-de-quadril-no-idoso.html">Fratura de quadril no idoso</a></li>
         </ul>'''
 

@@ -4,6 +4,8 @@ Documento de transferência de contexto. Leia inteiro antes de produzir qualquer
 
 **Próxima tarefa combinada: artigo sobre DOR NA VIRILHA.** Detalhes na seção 12.
 
+**Atenção antes de rodar qualquer script:** leia a seção 18. Os arquivos `BUILD-design.css` e `styles.css` do repositório já estiveram desatualizados em relação ao CSS realmente embutido nas páginas, e rodar o `apply_polish.py` nessa condição reverte o design de todas as páginas de uma vez.
+
 ---
 
 ## 1. O que é o projeto
@@ -33,7 +35,7 @@ Site estático informativo de SEO local sobre saúde do quadril, em português d
 
 ---
 
-## 3. Estado atual: 12 páginas publicadas
+## 3. Estado atual: 13 páginas publicadas
 
 | Arquivo | Assunto | Termo-alvo principal |
 |---|---|---|
@@ -44,6 +46,7 @@ Site estático informativo de SEO local sobre saúde do quadril, em português d
 | `quanto-custa-protese-de-quadril.html` | SUS, convênio, particular | quanto custa prótese de quadril |
 | `recuperacao-protese-de-quadril.html` | Linha do tempo pós-operatória | recuperação prótese de quadril |
 | `dor-no-quadril.html` | Causas de dor no quadril | dor no quadril |
+| `bursite-no-quadril.html` | Bursite trocantérica, tendinopatia glútea e dor lateral do quadril | **bursite no quadril** |
 | `fratura-de-quadril-no-idoso.html` | Fratura de fêmur proximal no idoso: cirurgia, recuperação, prognóstico | **fratura de quadril no idoso** |
 | `protese-de-quadril-vale-a-pena.html` | Artigo sobre estudo de 5 anos | prótese de quadril vale a pena |
 | `cirurgioes-curitiba.html` | Espaço de indicação de cirurgiões | cirurgião de quadril Curitiba |
@@ -56,7 +59,7 @@ Site estático informativo de SEO local sobre saúde do quadril, em português d
 
 **Cada página HTML é autossuficiente:** o CSS inteiro está inline dentro de uma tag `<style>` e o JavaScript inteiro dentro de uma tag `<script>`, em TODAS as páginas. Os arquivos `styles.css` e `main.js` na raiz existem só como referência/backup; as páginas NÃO os carregam.
 
-Consequência prática: qualquer mudança de design precisa ser propagada para as 12 páginas de uma vez. É para isso que existe o script `apply_polish.py`.
+Consequência prática: qualquer mudança de design precisa ser propagada para as 13 páginas de uma vez. É para isso que existe o script `apply_polish.py`.
 
 Todos os caminhos são **relativos** (`assets/foo.jpg`, `protese-de-quadril.html`), nunca absolutos.
 
@@ -114,7 +117,7 @@ Para criar uma página nova:
 **Componentes disponíveis (classes CSS já existentes):**
 `.wrap` `.read` `.prose` `.lead` `.eyebrow` `.pill` `.crumbs` `.toc` `.cards` `.cards-3` `.card` `.callout` (variantes `.info` e `.alert`) `.stat-row` `.stat` `.post-fig` `.faq` `.takeaways` `.refs` `.surgeon` `.mailbox` `.altmail` `.paths` `.path` `.split` `.anatomy` `.btn` `.btn-primary` `.btn-ghost` `.btn-mail` `.reveal` `.readbar` `.section-mist` `.section-tint`
 
-**Detalhes de comportamento:** barra de progresso de leitura no topo (âmbar), animação de entrada `.reveal` via IntersectionObserver, menu mobile com breakpoint em 1140px (a nav tem 8 itens; o breakpoint foi subido de 1040 para 1140 quando o oitavo item entrou), `prefers-reduced-motion` respeitado, estilos de impressão.
+**Detalhes de comportamento:** barra de progresso de leitura no topo (âmbar), animação de entrada `.reveal` via IntersectionObserver, menu mobile com breakpoint em 1220px (a nav tem 9 itens; o breakpoint foi de 1040 para 1140 e depois para 1220, e o container do cabeçalho ganhou `max-width` própria de 1240px porque a nav não cabia mais nos 1120px do `.wrap`), `prefers-reduced-motion` respeitado, estilos de impressão.
 
 **Marca:** o usuário criou uma marca própria (pelve estilizada em verde-água e verde-petróleo com ponto âmbar, mais o wordmark "Quadril Curitiba"). Ela está em `assets/marca-quadril-curitiba-simbolo.png` (só o símbolo, usada no hero da home) e `assets/marca-quadril-curitiba.png` (logo completo, reserva). **Em 16 a 34 pixels a marca vira um borrão**, por isso o cabeçalho e o favicon continuam usando o ícone geométrico antigo (o SVG `.mark` embutido em `apply_polish.py`). Não trocar sem redesenhar uma versão simplificada.
 
@@ -157,14 +160,13 @@ O endereço fica visível como texto dentro do botão, então mesmo que tudo fal
 
 ## 8. QA obrigatório antes de entregar
 
-Rodar sempre este script no diretório do site. Ele já pegou erros reais antes.
+Rodar sempre este script no diretório do site. Ele já pegou erros reais antes, inclusive schema de FAQ que não espelhava o conteúdo visível.
 
 ```python
 import re, glob, os, json
 from html.parser import HTMLParser
 files=sorted(glob.glob('*.html'))
 existing=set(os.listdir('.'))|{'assets/'+f for f in os.listdir('assets')}
-github_only={'assets/og-image.png','assets/favicon.svg','assets/idosa-dor-no-quadril.jpg','assets/quadril-saudavel-vs-artrose.jpg'}
 sitemap=set(re.findall(r'<loc>https://quadrilcuritiba\.com\.br/([^<]*)</loc>', open('sitemap.xml').read()))
 errors=[]
 class C(HTMLParser):
@@ -175,6 +177,9 @@ class C(HTMLParser):
             if d['id'] in s.ids: s.dups.append(d['id'])
             s.ids.add(d['id'])
         if t=='img': s.imgs.append(d)
+def clean(x):
+    x=re.sub(r'<[^>]+>',' ',x).replace('&nbsp;',' ').replace('&mdash;','\u2014').replace('&amp;','&')
+    return re.sub(r'\s+',' ',x).strip()
 for f in files:
     h=open(f).read(); c=C(); c.feed(h)
     if '{{' in h: errors.append(f+': placeholder nao substituido')
@@ -182,12 +187,13 @@ for f in files:
     for m in re.finditer(r'(?:href|src)="([^"#]+?)(#[^"]*)?"', h):
         u=m.group(1)
         if u.startswith(('http','mailto','tel')): continue
-        if u not in existing and u not in github_only: errors.append(f+': link quebrado '+u)
+        if u not in existing: errors.append(f+': link quebrado '+u)
     for m in re.finditer(r'href="#([^"]+)"', h):
         if m.group(1) not in c.ids: errors.append(f+': ancora inexistente #'+m.group(1))
+    types=[]
     for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', h, re.S):
-        try: json.loads(m.group(1))
-        except Exception as e: errors.append(f+': JSON-LD invalido '+str(e)[:50])
+        try: types.append(json.loads(m.group(1)).get('@type'))
+        except Exception as e: errors.append(f+': JSON-LD invalido '+str(e)[:60])
     for im in c.imgs:
         if not im.get('alt'): errors.append(f+': img sem alt '+im.get('src',''))
     if h.count('id="site-nav"')!=1: errors.append(f+': nav ausente ou duplicada')
@@ -195,11 +201,25 @@ for f in files:
     if can and can.group(1) and can.group(1)!=f: errors.append(f+': canonical divergente')
     if f not in sitemap and f!='index.html': errors.append(f+': fora do sitemap')
     if 'class="surgeon' in h and 'class="mailbox"' not in h: errors.append(f+': bloco de contato ausente')
+    t=re.search(r'<title>(.*?)</title>',h,re.S).group(1)
+    d=re.search(r'<meta name="description" content="(.*?)">',h,re.S)
+    if len(t)>65: errors.append(f+': title com %d caracteres'%len(t))
+    if not d: errors.append(f+': sem description')
+    elif len(d.group(1))>160: errors.append(f+': description com %d caracteres'%len(d.group(1)))
+    if f!='index.html' and 'BreadcrumbList' not in types: errors.append(f+': sem BreadcrumbList')
+    if 'dateModified' not in h: errors.append(f+': sem dateModified')
+    if len(re.findall(r'<h1',h))!=1: errors.append(f+': mais de um h1 ou nenhum')
+    vis=[clean(x) for x in re.findall(r'<summary>(.*?)</summary>',h,re.S) if not clean(x).lower().startswith('refer')]
+    sch=[]
+    for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', h, re.S):
+        try:
+            dd=json.loads(m.group(1))
+            if dd.get('@type')=='FAQPage': sch=[q['name'] for q in dd['mainEntity']]
+        except Exception: pass
+    if vis!=sch: errors.append(f+': FAQ schema nao espelha o FAQ visivel')
 print('ARQUIVOS:',len(files)); print('ERROS:' if errors else 'TUDO CERTO')
 for e in errors: print(' -',e)
 ```
-
----
 
 ## 9. Regras de conteúdo — CFM e ética médica
 
@@ -261,7 +281,7 @@ A página de fratura de quadril no idoso foi publicada em 31/07/2026 (ver seçã
 - sinais de alerta
 - o que fazer enquanto espera a consulta
 
-**Links internos a criar:** para `artrose-de-quadril.html` (o destino principal), `dor-no-quadril.html`, `como-aliviar-dor-artrose-quadril.html` e `fratura-de-quadril-no-idoso.html` (dor na virilha após queda em idoso).
+**Links internos a criar:** para `artrose-de-quadril.html` (o destino principal), `dor-no-quadril.html`, `como-aliviar-dor-artrose-quadril.html`, `bursite-no-quadril.html` (contraste virilha x lateral, que já está escrito lá) e `fratura-de-quadril-no-idoso.html` (dor na virilha após queda em idoso).
 
 ## 13. Fila de conteúdo depois dessa
 
@@ -295,6 +315,14 @@ Em ordem de prioridade discutida:
 - **Yang 2025**, Scientific Reports 15:22241 — índice prognóstico nutricional (albumina + 5 × linfócitos) em 2.115 idosos chineses; ponto de inflexão em 50,3; abaixo dele, cada unidade a mais reduz a mortalidade em 6%; 1.529 transtrocantéricas contra 586 do colo; 96% das fraturas por queda simples; 68% mulheres; idade média 79,4 anos.
 - Citados sem PDF, de conhecimento consolidado: HEALTH Investigators 2019 (NEJM, prótese total contra parcial), HIP ATTACK 2020 (Lancet, cirurgia acelerada), Lyles 2007 (NEJM, ácido zoledrônico reduz nova fratura e mortalidade), Bhandari e Swiontkowski 2017 (NEJM), Berry 2019 (JAMA), Moran 2005 (JBJS), Smith 2014 (Age and Ageing), NICE CG124.
 
+**Bursite e tendinopatia glútea (absorvidos em 16/08/2026):**
+- **Bremer 2025**, Clinical Rehabilitation 39(5):600-617 — revisão sistemática de eficácia; 2.825 estudos triados, 27 avaliados, 13 excluídos por alto risco de viés, 11 mantidos; 934 participantes, 94,7% mulheres. Exercício com educação: efeito médio sobre dor (SMD 0,95; IC 0,58-1,33) e função (0,91; 0,53-1,28) no curto prazo, pequeno no médio e longo. Corticoide: efeito pequeno sobre dor no curto prazo (0,51; 0,16-0,86), nulo depois. Ondas de choque focadas superiores ao corticoide para dor em 12 meses. PRP superior ao corticoide para função no curto prazo (0,46; 0,00-0,91).
+- **Cordeiro 2024**, Scientific Reports 14:3343 — metanálise; 5 estudos, 383 participantes na análise quantitativa, 78% mulheres. Exercício superior a intervenção mínima para função no curto prazo (MD 10,24; IC 5,98-14,50) e longo prazo (6,54; 1,88-11,21); sem diferença em qualidade de vida; dor equivalente ao corticoide. GRADE baixo a muito baixo. Traz os desfechos do LEAP: exercício com maior taxa de sucesso que corticoide (+19,9% em 8 semanas, +20,4% em 52 semanas) e que esperar (+49,1% e +26,8%); corticoide superior a esperar em 8 semanas (+29,2%) mas não em 52 (+6,4%; IC -10,7 a 23,6).
+- **Ladurner 2021**, Orthopaedic Journal of Sports Medicine 9(7) — recomendação por estágio; 27 estudos, 1.103 pacientes, idade média 53,7 anos, IMC 28,3, proporção mulher:homem 7:1. Graus de Bhabra (1 bursite, 2 tendinopatia, 3 ruptura parcial, 4 ruptura completa). Complicação cirúrgica média 10%, revisão 4,5%; bursectomia até 8%; osteotomia de redução trocantérica 30% e desaconselhada. Sucesso percebido do exercício em 12 meses: 78,6%.
+- **Pianka 2021**, SAGE Open Medicine 9 — incidência 1,8 por 1.000 adultos por ano; predomínio feminino de 2 a 3 para 1; Long 2013 com 877 pacientes ao ultrassom (49,9% tendinopatia, 29,1% banda iliotibial, 20,2% bursa, apenas 8,1% bursite isolada); Bird com RM em 24 pacientes (62,5% tendinopatia, 45,8% ruptura, 8,3% bursite); testes clínicos com sensibilidade e especificidade; RM com acurácia de 91% para rupturas mas edema peritrocantérico presente em 65% a 88% de quadris assintomáticos; radiografia sens 64% esp 26%; Rompe com a inversão de resultados entre 1 mês e 15 meses (corticoide 75% para 48%, ondas de choque 13% para 74%, exercício em casa 7% para 80%).
+- **Reid 2016**, Journal of Orthopaedics 13(1):15-28 — tratamento conservador como padrão-ouro, com mais de 90% de sucesso; ausência de protocolo definido; Brinks 2011 com 55% x 34% em 3 meses e 61% x 60% em 12 meses.
+- **Nasser 2021**, IJSPT 16(2):288-305 — tendinopatia do isquiotibial proximal; 12 estudos, só 2 ECRs; evidência insuficiente para recomendar qualquer intervenção; ondas de choque superiores a multimodal em atletas (retorno ao esporte em 9 semanas, contra nenhum retorno em 1 ano); corticoide sem melhora além de 3 meses em 56%; cirurgia com 10% de complicações.
+
 **Pendência:** o usuário tem um artigo da ScienceDirect (identificador `S0049017225002264`, revista Seminars in Arthritis and Rheumatism) sobre colágeno que não foi possível abrir por bloqueio e paywall. Se ele enviar o PDF, incorporar os números na seção de colágeno da página de alívio da dor.
 
 ---
@@ -310,6 +338,7 @@ Em `assets/`, todas otimizadas:
 | `protese-total-quadril-componentes.jpg` | página de custo | diagrama gerado por IA, rótulos corretos |
 | `marca-quadril-curitiba-simbolo.png` | hero da home | marca criada pelo usuário |
 | `marca-quadril-curitiba.png` | reserva, logo com wordmark | marca criada pelo usuário |
+| `anatomia-bursite-tendinite-quadril.svg` | página de bursite e tendinite | esquema vetorial em camadas criado do zero nas cores da marca, com o osso, os tendões glúteos, a bursa e a banda iliotibial; SVG, escala livre, cerca de 5 KB |
 | `raio-x-fratura-colo-femur.jpg` | página de fratura no idoso | radiografia real de bacia AP, sem qualquer dado de identificação, fornecida pelo usuário; 1008x840, ~80 KB |
 
 Padrão de otimização: JPEG progressivo, 1200 pixels de largura, aproximadamente 100 KB. PNGs com transparência quantizados em 48 cores.
@@ -350,3 +379,39 @@ E dizer algo como: "Vamos fazer o artigo sobre fratura de quadril no idoso. Leia
 - Os números de mortalidade estão explícitos, mas sempre seguidos do enquadramento de que descrevem populações e não pessoas, e de que a fragilidade prévia prevê o desfecho muito melhor do que a idade.
 - Existe uma seção final ("Uma nota sobre os números desta página") avisando que as coortes são asiáticas e que não há base brasileira equivalente publicada.
 - A cirurgia é apresentada como forma de tirar a pessoa da cama, não apenas de consertar o osso — é o enquadramento que mais reduz a angústia da família.
+
+
+---
+
+## 18. Registro da entrega de 16/08/2026 — bursite e tendinite, mais uma faxina de SEO técnico
+
+**Publicado:** `bursite-no-quadril.html`, cerca de 6.850 palavras, 17 seções H2 de conteúdo, 8 perguntas no FAQ, um diagrama vetorial próprio.
+
+**Ângulo editorial escolhido, e vale manter:** o gancho da página é que, em 877 pacientes examinados por ultrassom, apenas 8,1% tinham bursite isolada. Ou seja, "bursite no quadril" quase nunca descreve o problema real, que é tendinopatia glútea. Nenhum concorrente em português diz isso. É a mesma marca registrada do site (honestidade com os números) aplicada a um termo de busca alto.
+
+**Bug real corrigido antes de qualquer coisa:** o `BUILD-design.css` e o `styles.css` do repositório estavam atrás do CSS embutido nas páginas (20.069 contra 22.204 caracteres). Rodar o `apply_polish.py` naquele estado teria revertido os refinamentos de cabeçalho em todas as páginas. O CSS e o JS foram reextraídos das páginas e regravados em `design.css`, `styles.css`, `BUILD-design.css` e `main.js`. **Sempre conferir isso antes de rodar o script:** o inline das páginas é a fonte da verdade, não os arquivos soltos.
+
+**Mudanças de design propagadas:**
+- Breakpoint do menu mobile de 1140px para 1220px e `max-width` de 1240px só para o `.wrap` do cabeçalho, porque a nav com 9 itens não cabia nos 1120px padrão. Validado em 1221, 1280, 1440 e 1920 pixels com navegador real.
+- `.nav a` com fonte 0.92rem e padding lateral de 10px, `gap` de 1px, `padding-left` de 14px.
+- Rótulos da nav encurtados: "Coxartrose" virou "Artrose" (que é o termo mais buscado), "Aliviar a dor" virou "Aliviar dor", "Fratura no idoso" virou "Fratura". Entrou "Bursite".
+- Corrigido o `top` do menu mobile de 68px para 72px, que estava desalinhado com a altura real do cabeçalho.
+- `.paths` da home passou de 4 colunas fixas para `auto-fit`, e ganhou um quinto atalho: "Dói na lateral do quadril".
+- Classe nova `.revdate`, usada na data visível de última revisão.
+
+**SEO técnico aplicado ao site inteiro:**
+- `BreadcrumbList` nas 12 páginas internas (antes só a de fratura tinha).
+- `MedicalWebPage` ou `WebPage` criado onde faltava: `dor-no-quadril`, `protese-de-quadril`, `recuperacao-protese-de-quadril`, `cirurgioes-curitiba`, `sobre`, `privacidade`.
+- `dateModified` em todas as páginas, `datePublished` na de fratura (31/07/2026) e na de bursite (16/08/2026), mais `publisher` como Organization. Data visível "Revisado em" nas páginas de conteúdo.
+- `WebSite` schema na home.
+- **Todos os FAQPage foram regerados a partir do FAQ visível de cada página.** Sete páginas tinham schema que não espelhava as perguntas exibidas, com texto diferente e perguntas faltando, o que faz o Google suprimir o rich result. Agora o QA valida esse espelhamento automaticamente.
+- Meta descriptions acima de 160 caracteres reescritas em 7 páginas; títulos acima de 65 caracteres encurtados em 3 (home, prótese, aliviar a dor).
+- Removidos `assets/styles.css` e `assets/main.js`, que eram resquícios do design antigo e não eram carregados por ninguém.
+
+**Links contextuais novos para a página de bursite:** `dor-no-quadril.html` (dois, na lista de causas e no mapa de localização da dor), `artrose-de-quadril.html` (parágrafo de diferenciação), `index.html` (card novo com etiqueta "Dor lateral", atalho novo em `.paths` e parágrafo na seção de doenças).
+
+**No Search Console, submeter:** o sitemap, mais indexação de `bursite-no-quadril.html`, `dor-no-quadril.html`, `artrose-de-quadril.html` e a home. As demais páginas mudaram só em schema e meta, e serão recolhidas naturalmente.
+
+**QA:** o script da seção 8 ganhou quatro verificações novas e deve substituir a versão antiga. Além dos testes originais, ele agora falha se: o título passar de 65 caracteres, a description passar de 160, faltar `BreadcrumbList` ou `dateModified`, houver mais de um `h1`, ou o FAQPage não espelhar exatamente as perguntas visíveis. Rodou limpo nas 13 páginas.
+
+**O maior gargalo de conteúdo que sobra, e a próxima grande alavanca:** as páginas-pilar estão magras para o que se quer ranquear. `protese-de-quadril.html` tem cerca de 1.230 palavras e é o alvo do termo número 2 do site; `recuperacao-protese-de-quadril.html` tem 980; `dor-no-quadril.html` tem 830; `artrose-de-quadril.html`, o pilar número 1, tem 1.820. Para comparação, a página de fratura tem 5.600 e a de bursite 6.850. Expandir `protese-de-quadril.html` e `artrose-de-quadril.html` ao padrão das duas páginas novas provavelmente rende mais posição do que qualquer artigo inédito da fila.

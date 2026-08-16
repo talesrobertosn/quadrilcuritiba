@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dor no Quadril: causas comuns e quando se preocupar</title>
-<meta name="description" content="Dor no quadril: causas mais comuns (artrose, bursite, tendinite, impacto, coluna), o que o local da dor sugere, sinais de alerta e quando procurar um ortopedista.">
+<meta name="description" content="Dor no quadril: causas comuns (artrose, bursite, tendinite, coluna), o que o local da dor indica e quando procurar um ortopedista.">
 <link rel="canonical" href="https://quadrilcuritiba.com.br/dor-no-quadril.html">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="article">
@@ -101,13 +101,14 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .site-header{position:sticky;top:0;z-index:50;background:rgba(246,249,249,.86);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(16,48,46,.03),0 6px 20px rgba(16,48,46,.05);transition:box-shadow .25s var(--ease),background .25s var(--ease);}
 .site-header.scrolled{box-shadow:0 4px 24px rgba(16,48,46,.11);background:rgba(246,249,249,.97);}
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:22px;height:72px;}
+.site-header .wrap{max-width:1240px;}
 .brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;font-size:1.2rem;color:var(--ink);letter-spacing:-.01em;transition:opacity .15s var(--ease);flex:0 0 auto;}
 .brand:hover{text-decoration:none;opacity:.85;}
 .brand .mark{width:36px;height:36px;flex:0 0 auto;border-radius:10px;box-shadow:0 3px 10px rgba(15,91,94,.26);transition:transform .3s var(--ease);}
 .brand:hover .mark{transform:rotate(-8deg);}
 .brand b{color:var(--primary);font-weight:600;}
-.nav{display:flex;align-items:center;gap:3px;border-left:1px solid var(--line);padding-left:20px;margin-left:2px;}
-.nav a{position:relative;color:var(--body);font-size:.93rem;font-weight:600;padding:10px 13px;white-space:nowrap;border-radius:9px;transition:background .15s var(--ease),color .15s var(--ease);}
+.nav{display:flex;align-items:center;gap:1px;border-left:1px solid var(--line);padding-left:14px;margin-left:2px;}
+.nav a{position:relative;color:var(--body);font-size:.92rem;font-weight:600;padding:10px 10px;white-space:nowrap;border-radius:9px;transition:background .15s var(--ease),color .15s var(--ease);}
 .nav a::after{content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .2s var(--ease);}
 .nav a:hover{background:var(--mist);text-decoration:none;color:var(--ink);}
 .nav a:hover::after{transform:scaleX(1);}
@@ -121,11 +122,11 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .nav-toggle[aria-expanded="true"] line:nth-child(2){opacity:0;}
 .nav-toggle[aria-expanded="true"] line:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
 
-@media(max-width:1140px){
+@media(max-width:1220px){
   .nav-toggle{display:flex;}
-  .nav{position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 14px 16px;gap:2px;box-shadow:var(--shadow);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.18s var(--ease);}
+  .nav{position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 14px 16px;gap:2px;box-shadow:var(--shadow);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.18s var(--ease);}
   .nav.open{transform:none;opacity:1;pointer-events:auto;}
-  .nav a{padding:12px 12px;border-radius:10px;}
+  .nav a{padding:12px 12px;border-radius:10px;font-size:.96rem;}
   .nav a::after{display:none;}
 }
 
@@ -188,12 +189,14 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .prose a:hover{border-bottom-color:var(--primary);text-decoration:none;}
 
 /* ---------- Figuras ---------- */
+.revdate{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;color:var(--muted);margin-top:20px;letter-spacing:.01em;}
+.revdate svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;}
 .post-fig{margin:2em 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:var(--surface);}
 .post-fig img{width:100%;display:block;}
 .post-fig figcaption{font-size:.88rem;color:var(--muted);padding:12px 18px;border-top:1px solid var(--line);background:linear-gradient(180deg,#FDFEFE,var(--surface));}
 
 /* ---------- Trilhas rápidas ---------- */
-.paths{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:34px;}
+.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(186px,1fr));gap:12px;margin-bottom:34px;}
 .path{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:12px 20px 12px 14px;box-shadow:var(--shadow-sm);color:var(--ink);font-weight:600;font-size:.98rem;transition:transform .18s var(--ease),box-shadow .18s var(--ease),border-color .18s var(--ease);}
 .path:hover{text-decoration:none;transform:translateY(-2px);box-shadow:var(--shadow);border-color:#BFE0DD;color:var(--primary);}
 .path .n{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--primary-tint);color:var(--primary);display:grid;place-items:center;font-family:var(--font-display);font-size:.92rem;font-weight:600;}
@@ -343,7 +346,15 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .stack-lg > * + *{margin-top:clamp(46px,7vw,86px);}
 
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Dor no quadril é sempre artrose?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Pode ser bursite, tendinite, impacto femoroacetabular ou dor vinda da coluna, entre outras causas."}}, {"@type": "Question", "name": "Quando a dor no quadril é urgência?", "acceptedAnswer": {"@type": "Answer", "text": "Quando há incapacidade de apoiar o peso após queda, dor súbita e intensa com deformidade da perna, ou febre associada."}}]}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Dor no quadril é sempre artrose?","acceptedAnswer":{"@type":"Answer","text":"Não. Pode ser bursite, tendinite, impacto, dor vinda da coluna, entre outras causas. Só a avaliação médica define a origem."}},{"@type":"Question","name":"Dor na virilha é do quadril?","acceptedAnswer":{"@type":"Answer","text":"Com frequência, sim. A dor na virilha costuma apontar para a própria articulação do quadril, como artrose ou impacto femoroacetabular."}},{"@type":"Question","name":"Quando a dor no quadril é urgência?","acceptedAnswer":{"@type":"Answer","text":"Quando há incapacidade de apoiar o peso após queda, dor súbita e intensa com deformidade da perna, ou febre associada. Nesses casos, procure atendimento imediato."}}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MedicalWebPage","headline":"Dor no quadril: causas, o que o local da dor indica e quando se preocupar","inLanguage":"pt-BR","url":"https://quadrilcuritiba.com.br/dor-no-quadril.html","dateModified":"2026-08-16","publisher":{"@type":"Organization","name":"Quadril Curitiba","url":"https://quadrilcuritiba.com.br/"},"about":{"@type":"MedicalCondition","name":"Dor no quadril","alternateName":["Coxalgia"]}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://quadrilcuritiba.com.br/"},{"@type":"ListItem","position":2,"name":"Dor no quadril","item":"https://quadrilcuritiba.com.br/dor-no-quadril.html"}]}
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -356,10 +367,11 @@ section{padding:clamp(46px,7vw,86px) 0;}
       <a href="protese-de-quadril.html">Prótese</a>
       <a href="quanto-custa-protese-de-quadril.html">Custos</a>
       <a href="recuperacao-protese-de-quadril.html">Recuperação</a>
-      <a href="artrose-de-quadril.html">Coxartrose</a>
-      <a href="como-aliviar-dor-artrose-quadril.html">Aliviar a dor</a>
+      <a href="artrose-de-quadril.html">Artrose</a>
+      <a href="como-aliviar-dor-artrose-quadril.html">Aliviar dor</a>
       <a href="dor-no-quadril.html">Dor no quadril</a>
-      <a href="fratura-de-quadril-no-idoso.html">Fratura no idoso</a>
+      <a href="bursite-no-quadril.html">Bursite</a>
+      <a href="fratura-de-quadril-no-idoso.html">Fratura</a>
       <a href="cirurgioes-curitiba.html">Cirurgiões</a>
     </nav>
   </div>
@@ -369,13 +381,14 @@ section{padding:clamp(46px,7vw,86px) 0;}
     <p class="crumbs reveal"><a href="index.html">Início</a> &rsaquo; Dor no quadril</p>
     <span class="pill reveal">Dor no quadril</span>
     <h1 class="reveal">Dor no quadril: causas comuns e quando se preocupar</h1>
-    <p class="lead reveal">Nem toda dor no quadril é a mesma coisa, e a maioria não significa cirurgia. Entenda as causas mais frequentes, o que o local da dor sugere e quais sinais pedem atenção médica.</p></div></section><section style="padding-top:clamp(30px,4vw,46px);padding-bottom:0;"><div class="wrap">
+    <p class="lead reveal">Nem toda dor no quadril é a mesma coisa, e a maioria não significa cirurgia. Entenda as causas mais frequentes, o que o local da dor sugere e quais sinais pedem atenção médica.</p>
+  <p class="revdate reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z"/><path d="M12 6.5V12l3.5 2"/></svg> Revisado em 16 de agosto de 2026</p></div></section><section style="padding-top:clamp(30px,4vw,46px);padding-bottom:0;"><div class="wrap">
     <nav class="toc reveal" aria-label="Conteúdo desta página"><h2>Nesta página</h2><ol><li><a href="#causas">Causas mais comuns</a></li><li><a href="#onde">Onde dói e o que sugere</a></li><li><a href="#alerta">Quando se preocupar</a></li><li><a href="#o-que-fazer">O que fazer</a></li><li><a href="#medico">Quando procurar o médico</a></li></ol></nav></div></section><section><div class="wrap read prose">
 <h2 id="causas" class="reveal">As causas mais comuns</h2>
 <p class="reveal">A dor no quadril tem muitas origens, e nem sempre o problema está na articulação em si. Entre as causas mais frequentes:</p>
 <ul class="reveal">
 <li><strong>Artrose (coxartrose):</strong> desgaste da cartilagem, com dor que piora ao caminhar. <a href="artrose-de-quadril.html">Saiba mais</a>.</li>
-<li><strong>Bursite e tendinite:</strong> inflamações ao redor do quadril, comuns na lateral.</li>
+<li><strong>Bursite e tendinite:</strong> dor na lateral do quadril, que piora ao deitar daquele lado. Na maioria das vezes o problema é o tendão dos glúteos, e não a bursa. <a href="bursite-no-quadril.html">Veja o guia sobre bursite e tendinite no quadril</a>.</li>
 <li><strong>Impacto femoroacetabular:</strong> dor na virilha em pessoas jovens e ativas.</li>
 <li><strong>Dor que vem da coluna:</strong> problemas na lombar podem irradiar para a região do quadril e da nádega.</li>
 <li><strong>Fratura:</strong> sobretudo em idosos após queda, é uma situação de urgência. <a href="fratura-de-quadril-no-idoso.html">Veja o guia sobre fratura de quadril no idoso</a>.</li>
@@ -385,7 +398,7 @@ section{padding:clamp(46px,7vw,86px) 0;}
 <p class="reveal">O local da dor ajuda a orientar a investigação, embora só o médico possa confirmar:</p>
 <ul class="reveal">
 <li><strong>Dor na virilha:</strong> costuma apontar para a própria articulação do quadril, como artrose ou impacto.</li>
-<li><strong>Dor na lateral:</strong> sugere bursite ou tendinite na região do trocânter.</li>
+<li><strong>Dor na lateral:</strong> sugere <a href="bursite-no-quadril.html">bursite ou tendinite na região do trocânter</a>, sobretudo quando dói ao apertar o local e ao deitar de lado.</li>
 <li><strong>Dor na nádega ou que desce pela perna:</strong> pode ter origem na coluna lombar.</li>
 </ul>
 
@@ -444,6 +457,7 @@ section{padding:clamp(46px,7vw,86px) 0;}
           <li><a href="artrose-de-quadril.html">Coxartrose (artrose)</a></li>
           <li><a href="como-aliviar-dor-artrose-quadril.html">Como aliviar a dor</a></li>
           <li><a href="dor-no-quadril.html">Dor no quadril</a></li>
+          <li><a href="bursite-no-quadril.html">Bursite e tendinite no quadril</a></li>
           <li><a href="fratura-de-quadril-no-idoso.html">Fratura de quadril no idoso</a></li>
         </ul>
       </div>
