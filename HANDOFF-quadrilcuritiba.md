@@ -196,6 +196,10 @@ for f in files:
         except Exception as e: errors.append(f+': JSON-LD invalido '+str(e)[:60])
     for im in c.imgs:
         if not im.get('alt'): errors.append(f+': img sem alt '+im.get('src',''))
+    for m in re.finditer(r'<figure class="post-fig"[^>]*>(.*?)</figure>', h, re.S):
+        blk=m.group(1)
+        if '<svg' in blk and 'aria-labelledby' not in blk and '<img' not in blk:
+            errors.append(f+': svg de figura sem aria-labelledby')
     if h.count('id="site-nav"')!=1: errors.append(f+': nav ausente ou duplicada')
     can=re.search(r'rel="canonical" href="https://quadrilcuritiba\.com\.br/([^"]*)"', h)
     if can and can.group(1) and can.group(1)!=f: errors.append(f+': canonical divergente')
@@ -398,6 +402,7 @@ E dizer algo como: "Vamos fazer o artigo sobre fratura de quadril no idoso. Leia
 - Corrigido o `top` do menu mobile de 68px para 72px, que estava desalinhado com a altura real do cabeçalho.
 - `.paths` da home passou de 4 colunas fixas para `auto-fit`, e ganhou um quinto atalho: "Dói na lateral do quadril".
 - Classe nova `.revdate`, usada na data visível de última revisão.
+- Classes novas `.figscroll` e `.figscroll-hint`, para diagramas vetoriais embutidos.
 
 **SEO técnico aplicado ao site inteiro:**
 - `BreadcrumbList` nas 12 páginas internas (antes só a de fratura tinha).
@@ -407,6 +412,10 @@ E dizer algo como: "Vamos fazer o artigo sobre fratura de quadril no idoso. Leia
 - **Todos os FAQPage foram regerados a partir do FAQ visível de cada página.** Sete páginas tinham schema que não espelhava as perguntas exibidas, com texto diferente e perguntas faltando, o que faz o Google suprimir o rich result. Agora o QA valida esse espelhamento automaticamente.
 - Meta descriptions acima de 160 caracteres reescritas em 7 páginas; títulos acima de 65 caracteres encurtados em 3 (home, prótese, aliviar a dor).
 - Removidos `assets/styles.css` e `assets/main.js`, que eram resquícios do design antigo e não eram carregados por ninguém.
+
+**Diagrama embutido, e não referenciado como arquivo.** O esquema anatômico da página de bursite está como `<svg>` inline dentro do `<figure>`, e não como `<img src="assets/...">`. O motivo é concreto: na primeira publicação o arquivo em `assets/` não chegou ao servidor e a figura quebrou, enquanto o resto da página, cujo CSS já é inline, apareceu perfeito. Embutir o SVG segue o mesmo princípio das outras páginas (cada página é autossuficiente) e elimina essa classe de falha. O arquivo `assets/anatomia-bursite-tendinite-quadril.svg` continua no repositório como fonte editável, mas a página não depende dele. Em telas de até 700px o diagrama rola na horizontal, com aviso visível só no celular. Se criar novos diagramas, siga esse padrão e mantenha `role="img"` com `aria-labelledby`, porque o QA agora exige.
+
+**Sobre o FAQPage, uma correção importante:** os rich results de FAQ foram descontinuados pelo Google em maio de 2026, com remoção completa do suporte em agosto de 2026. O espelhamento do schema com o FAQ visível continua valendo por consistência e por legibilidade para assistentes de IA, mas não gera mais caixa expandida no resultado de busca. Não invista tempo esperando esse retorno. O `BreadcrumbList` continua ativo e aparece como caminho de navegação.
 
 **Links contextuais novos para a página de bursite:** `dor-no-quadril.html` (dois, na lista de causas e no mapa de localização da dor), `artrose-de-quadril.html` (parágrafo de diferenciação), `index.html` (card novo com etiqueta "Dor lateral", atalho novo em `.paths` e parágrafo na seção de doenças).
 

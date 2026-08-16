@@ -193,6 +193,11 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .revdate svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;}
 .post-fig{margin:2em 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:var(--surface);}
 .post-fig img{width:100%;display:block;}
+.post-fig .figscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.post-fig .figscroll svg{width:100%;height:auto;display:block;}
+@media(max-width:700px){.post-fig .figscroll svg{min-width:600px;}}
+.figscroll-hint{display:none;}
+@media(max-width:700px){.figscroll-hint{display:block;margin-bottom:6px;font-weight:600;color:var(--primary);}}
 .post-fig figcaption{font-size:.88rem;color:var(--muted);padding:12px 18px;border-top:1px solid var(--line);background:linear-gradient(180deg,#FDFEFE,var(--surface));}
 
 /* ---------- Trilhas rápidas ---------- */
@@ -347,7 +352,7 @@ section{padding:clamp(46px,7vw,86px) 0;}
 
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"MedicalWebPage","headline":"Bursite e tendinite no quadril: sintomas, tratamento e o que funciona","inLanguage":"pt-BR","url":"https://quadrilcuritiba.com.br/bursite-no-quadril.html","datePublished":"2026-08-16","dateModified":"2026-08-16","about":{"@type":"MedicalCondition","name":"Síndrome da dor trocantérica maior","alternateName":["Bursite trocantérica","Bursite no quadril","Tendinopatia glútea","Tendinite no quadril","Dor lateral do quadril"]},"image":"https://quadrilcuritiba.com.br/assets/anatomia-bursite-tendinite-quadril.svg","publisher":{"@type":"Organization","name":"Quadril Curitiba","url":"https://quadrilcuritiba.com.br/"}}
+{"@context":"https://schema.org","@type":"MedicalWebPage","headline":"Bursite e tendinite no quadril: sintomas, tratamento e o que funciona","inLanguage":"pt-BR","url":"https://quadrilcuritiba.com.br/bursite-no-quadril.html","datePublished":"2026-08-16","dateModified":"2026-08-16","about":{"@type":"MedicalCondition","name":"Síndrome da dor trocantérica maior","alternateName":["Bursite trocantérica","Bursite no quadril","Tendinopatia glútea","Tendinite no quadril","Dor lateral do quadril"]},"image":"https://quadrilcuritiba.com.br/assets/og-image.png","publisher":{"@type":"Organization","name":"Quadril Curitiba","url":"https://quadrilcuritiba.com.br/"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://quadrilcuritiba.com.br/"},{"@type":"ListItem","position":2,"name":"Bursite e tendinite no quadril","item":"https://quadrilcuritiba.com.br/bursite-no-quadril.html"}]}
@@ -418,8 +423,98 @@ section{padding:clamp(46px,7vw,86px) 0;}
   <p class="reveal">Passe a mão na lateral do quadril, mais ou menos na altura do bolso da calça. Aquela saliência dura que você sente é o <strong>trocânter maior</strong>, a parte mais externa do topo do fêmur. Nela se prendem os tendões dos músculos glúteo médio e glúteo mínimo, que são os músculos responsáveis por manter a bacia nivelada a cada passo que você dá. Por cima de tudo isso passa a <strong>banda iliotibial</strong>, uma faixa espessa e resistente que desce da bacia até o joelho. E, entre o tendão e a banda, existe uma bolsa fina de lubrificação chamada <strong>bursa trocantérica</strong>, cuja função é permitir que essas estruturas deslizem uma sobre a outra sem atrito.</p>
 
   <figure class="post-fig reveal">
-    <img src="assets/anatomia-bursite-tendinite-quadril.svg" alt="Esquema em camadas da lateral do quadril mostrando, do osso para a pele: o trocânter maior, os tendões do glúteo médio e glúteo mínimo, a bursa trocantérica como uma bolsa fina e a banda iliotibial passando por cima" loading="lazy" width="1000" height="660">
-    <figcaption>As camadas da lateral do quadril, do osso para a pele. Note a proporção: o tendão é uma estrutura espessa e a bursa é uma película fina entre ele e a banda iliotibial. Imagem ilustrativa e esquemática.</figcaption>
+    <div class="figscroll">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" width="1000" height="660" role="img" aria-labelledby="fig-anatomia-titulo fig-anatomia-desc">
+<title id="fig-anatomia-titulo">As camadas da lateral do quadril: osso do trocânter, tendões glúteos, bursa trocantérica e banda iliotibial</title>
+<desc id="fig-anatomia-desc">Esquema em camadas da face lateral do quadril, do osso para a pele. No centro, à esquerda, está o trocânter maior, a saliência óssea que se sente na lateral do quadril. Envolvendo o osso vem uma camada escura e espessa, os tendões do glúteo médio e do glúteo mínimo, que é onde o problema costuma estar. Logo depois aparece a bursa trocantérica, desenhada como uma bolsa fina e achatada. Por cima de tudo passa a banda iliotibial, uma faixa larga e resistente, e por fim a pele. Quando se aperta a lateral do quadril, a pressão atravessa essas camadas e chega ao tendão.</desc>
+<defs>
+<linearGradient id="bone" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#FBFDFD"/><stop offset="1" stop-color="#DFEDEB"/>
+</linearGradient>
+<linearGradient id="tend" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#12666A"/><stop offset="1" stop-color="#0B4447"/>
+</linearGradient>
+<linearGradient id="itb" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#C6DEDA"/><stop offset=".5" stop-color="#EAF4F3"/><stop offset="1" stop-color="#C6DEDA"/>
+</linearGradient>
+<linearGradient id="burs" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#F0BC63"/><stop offset="1" stop-color="#D9912B"/>
+</linearGradient>
+</defs>
+
+<rect width="1000" height="660" fill="#F6F9F9"/>
+
+<!-- ============ OSSO: trocânter maior ============ -->
+<path d="M150 110 A 190 190 0 0 1 150 490 L 0 490 L 0 110 Z"
+      fill="url(#bone)" stroke="#AFC8C5" stroke-width="3.5"/>
+<g stroke="#CBDEDB" stroke-width="2.5" fill="none" opacity=".8">
+  <path d="M46 168 A 150 150 0 0 1 46 432"/>
+  <path d="M30 210 A 110 110 0 0 1 30 390"/>
+</g>
+
+<!-- ============ TENDÕES GLÚTEOS ============ -->
+<path d="M223 118 A 196 196 0 0 1 223 482 L 238 517 A 234 234 0 0 0 238 83 Z"
+      fill="url(#tend)"/>
+<g stroke="#4E9C99" stroke-width="2" opacity=".55" fill="none">
+  <path d="M228 108 A 206 206 0 0 1 228 492"/>
+  <path d="M233 96 A 220 220 0 0 1 233 504"/>
+</g>
+
+<!-- ============ BURSA ============ -->
+<ellipse cx="392" cy="300" rx="16" ry="62" fill="url(#burs)" stroke="#A96C14" stroke-width="2.5"/>
+
+<!-- ============ BANDA ILIOTIBIAL ============ -->
+<path d="M253 70 A 252 252 0 0 1 253 530 L 271 572 A 298 298 0 0 0 271 28 Z"
+      fill="url(#itb)" stroke="#9CBEB9" stroke-width="3"/>
+
+<!-- ============ PELE ============ -->
+<path d="M329 13 A 338 338 0 0 1 329 587" fill="none" stroke="#D6BCA9" stroke-width="5" stroke-linecap="round"/>
+<path d="M312 34 A 316 316 0 0 1 312 566" fill="none" stroke="#E4D2C4" stroke-width="2.5" stroke-dasharray="4 9"/>
+
+<!-- ============ RÓTULOS ============ -->
+<g font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="20" fill="#143230">
+
+  <!-- osso, rótulo interno -->
+  <text x="120" y="286" text-anchor="middle" font-weight="700" font-size="22" fill="#41615E">Trocânter</text>
+  <text x="120" y="316" text-anchor="middle" font-weight="700" font-size="22" fill="#41615E">maior</text>
+  <text x="120" y="348" text-anchor="middle" font-size="16" fill="#7A918E">o osso que se sente</text>
+  <text x="120" y="370" text-anchor="middle" font-size="16" fill="#7A918E">na lateral do quadril</text>
+
+  <!-- tendões -->
+  <g stroke="#0B4447" stroke-width="2.5" fill="none"><path d="M312 166 L 470 116 L 524 116"/></g>
+  <circle cx="312" cy="166" r="5" fill="#0B4447"/>
+  <text x="534" y="110" font-weight="700" fill="#0B4447">Tendões glúteos</text>
+  <text x="534" y="136" font-size="17" fill="#3B4F4D">glúteo médio e glúteo mínimo</text>
+  <text x="534" y="160" font-size="17" font-weight="600" fill="#B0503A">é aqui que costuma estar o problema</text>
+
+  <!-- bursa -->
+  <g stroke="#A96C14" stroke-width="2.5" fill="none"><path d="M408 300 L 490 300 L 524 300"/></g>
+  <text x="534" y="294" font-weight="700" fill="#8F5C13">Bursa trocantérica</text>
+  <text x="534" y="320" font-size="17" fill="#3B4F4D">uma bolsa fina de deslizamento</text>
+  <text x="534" y="344" font-size="17" fill="#3B4F4D">entre o tendão e a banda</text>
+
+  <!-- banda iliotibial -->
+  <g stroke="#5F7D79" stroke-width="2.5" fill="none"><path d="M374 480 L 470 502 L 524 502"/></g>
+  <circle cx="374" cy="480" r="5" fill="#5F7D79"/>
+  <text x="534" y="496" font-weight="700">Banda iliotibial</text>
+  <text x="534" y="522" font-size="17" fill="#3B4F4D">faixa espessa que desliza</text>
+  <text x="534" y="546" font-size="17" fill="#3B4F4D">sobre o trocânter</text>
+
+  <!-- pele -->
+  <g stroke="#B99C86" stroke-width="2.5" fill="none"><path d="M392 76 L 470 46 L 524 46"/></g>
+  <circle cx="392" cy="76" r="5" fill="#B99C86"/>
+  <text x="534" y="52" font-weight="700" fill="#8A6D55">Pele</text>
+
+  <!-- orientação -->
+  <g stroke="#6C7E7B" stroke-width="2.5" fill="none">
+    <path d="M40 632 L 300 632"/>
+    <path d="M292 624 L 302 632 L 292 640"/>
+  </g>
+  <text x="40" y="618" font-size="16" fill="#6C7E7B">de dentro do quadril para fora, em direção à pele</text>
+</g>
+</svg>
+  </div>
+    <figcaption><span class="figscroll-hint">Arraste o diagrama para o lado para ver todos os rótulos.</span>As camadas da lateral do quadril, do osso para a pele. Note a proporção: o tendão é uma estrutura espessa e a bursa é uma película fina entre ele e a banda iliotibial. Imagem ilustrativa e esquemática.</figcaption>
   </figure>
 
   <p class="reveal">Durante décadas se atribuiu toda a dor dessa região à inflamação da bursa, e daí veio o nome que colou. O problema é que essa explicação não sobreviveu aos exames de imagem. Quando se olha o que realmente está acontecendo lá dentro, a bursa quase nunca está sozinha no banco dos réus.</p>
