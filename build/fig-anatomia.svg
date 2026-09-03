@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 740" width="1200" height="740" role="img" aria-labelledby="fig-anat-t fig-anat-d">
+<title id="fig-anat-t">A articulação do quadril: a bola do fêmur encaixada na cavidade da bacia</title>
+<desc id="fig-anat-d">Esquema da articulação do quadril vista de frente. À direita e acima está a pelve, o osso da bacia. No canto inferior dela existe uma cavidade côncava chamada acetábulo, que funciona como o encaixe da articulação. Dentro desse encaixe fica a cabeça do fêmur, uma esfera lisa de osso, que é a bola da articulação. Entre a bola e o encaixe existe uma lâmina clara de cartilagem, que é a superfície de deslizamento e é justamente o que se desgasta na artrose. Nas bordas do acetábulo há um anel de fibrocartilagem chamado labrum, desenhado em âmbar, que aprofunda o encaixe e faz a vedação da articulação. Descendo da cabeça vem o colo do fêmur, uma haste mais estreita, e ao lado dele a saliência óssea do trocânter maior, que é o que se apalpa na lateral do quadril. Abaixo continua o corpo do fêmur, o osso da coxa.</desc>
+<defs>
+<linearGradient id="an-bone" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#FDFEFE"/><stop offset="1" stop-color="#DCEAE8"/>
+</linearGradient>
+<linearGradient id="an-bone2" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#FBFDFD"/><stop offset="1" stop-color="#D6E7E4"/>
+</linearGradient>
+<radialGradient id="an-head" cx="36%" cy="32%" r="74%">
+  <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#CFE3E0"/>
+</radialGradient>
+</defs>
+
+<rect width="1200" height="740" fill="#FFFFFF"/>
+
+<g transform="translate(190,26) scale(0.78)">
+
+  <!-- Pelve: asa do ilíaco, com o acetábulo escavado no canto inferior -->
+  <path d="M 340.5 341.3 A 130 130 0 1 1 569.6 413.5 C 606 440 656 450 706 442 C 800 428 866 360 862 256 C 858 150 800 74 700 56 C 590 36 440 62 366 128 C 336 156 326 240 340.5 341.3 Z"
+        fill="url(#an-bone)" stroke="#A6C3BF" stroke-width="4.5" stroke-linejoin="round"/>
+  <path d="M 452 128 C 540 92 646 92 726 124" fill="none" stroke="#C7DCD9" stroke-width="4.5" stroke-linecap="round" opacity=".85"/>
+  <path d="M 430 208 C 534 168 660 176 762 222" fill="none" stroke="#C7DCD9" stroke-width="4.5" stroke-linecap="round" opacity=".6"/>
+  <path d="M 606 322 C 682 306 748 318 796 346" fill="none" stroke="#C7DCD9" stroke-width="4.5" stroke-linecap="round" opacity=".5"/>
+
+  <!-- Fêmur: corpo -->
+  <path d="M 242 468 C 236 540 230 616 226 692 L 318 692 C 320 616 324 540 328 468 Z"
+        fill="url(#an-bone2)" stroke="#A6C3BF" stroke-width="4.5" stroke-linejoin="round"/>
+  <!-- Trocânter maior -->
+  <path d="M 300 350 C 292 322 268 306 244 312 C 220 318 212 344 216 376 C 220 412 232 448 244 476 L 330 476 C 322 434 312 388 300 350 Z"
+        fill="url(#an-bone2)" stroke="#A6C3BF" stroke-width="4.5" stroke-linejoin="round"/>
+  <!-- Colo do fêmur -->
+  <path d="M 448 292 C 390 322 330 360 276 396 L 326 476 C 380 444 442 408 496 372 Z"
+        fill="url(#an-bone2)" stroke="#A6C3BF" stroke-width="4.5" stroke-linejoin="round"/>
+  <!-- Pequeno trocânter -->
+  <path d="M 330 468 C 356 466 374 482 370 498 C 366 514 344 516 328 504 Z"
+        fill="url(#an-bone2)" stroke="#A6C3BF" stroke-width="4.5" stroke-linejoin="round"/>
+
+  <!-- Cabeça do fêmur -->
+  <circle cx="470" cy="330" r="86" fill="url(#an-head)" stroke="#A6C3BF" stroke-width="4.5"/>
+  <circle cx="470" cy="330" r="72" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity=".8"/>
+
+  <!-- Cartilagem: a lâmina de deslizamento entre a bola e o encaixe -->
+  <path d="M 380 330 A 90 90 0 1 1 543.7 381.6" fill="none" stroke="#8FCCC7" stroke-width="16" stroke-linecap="round"/>
+  <path d="M 380 330 A 90 90 0 1 1 543.7 381.6" fill="none" stroke="#D5EDEA" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- Labrum: o anel de vedação, nas bordas do encaixe -->
+  <path d="M 358.4 339.8 A 112 112 0 0 1 364.8 291.7" fill="none" stroke="#D9912B" stroke-width="26" stroke-linecap="round"/>
+  <path d="M 578.2 359 A 112 112 0 0 1 555.8 402" fill="none" stroke="#D9912B" stroke-width="26" stroke-linecap="round"/>
+</g>
+
+<!-- Linhas-guia -->
+<g fill="none" stroke="#7A9995" stroke-width="1.8" stroke-linecap="round">
+  <path d="M338 254 L463 289"/>
+  <path d="M341 326 L380 323"/>
+  <path d="M341 512 L400 496"/>
+  <path d="M892 116 L760 152"/>
+  <path d="M892 232 L624 224"/>
+  <path d="M892 348 L632 275"/>
+  <path d="M470 574 L490 366"/>
+  <path d="M640 630 L566 340"/>
+</g>
+<g fill="#0F5B5E">
+  <circle cx="463" cy="289" r="5.5"/><circle cx="380" cy="323" r="5.5"/><circle cx="400" cy="496" r="5.5"/>
+  <circle cx="760" cy="152" r="5.5"/><circle cx="624" cy="224" r="5.5"/><circle cx="632" cy="275" r="5.5"/>
+  <circle cx="490" cy="366" r="5.5"/><circle cx="566" cy="340" r="5.5"/>
+</g>
+
+<g font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="600" fill="#143230">
+  <text x="330" y="250" text-anchor="end">Labrum</text>
+  <text x="330" y="330" text-anchor="end">Trocânter maior</text>
+  <text x="330" y="520" text-anchor="end">Fêmur</text>
+  <text x="900" y="120" text-anchor="start">Pelve (bacia)</text>
+  <text x="900" y="236" text-anchor="start">Acetábulo</text>
+  <text x="900" y="352" text-anchor="start">Cartilagem</text>
+  <text x="455" y="600" text-anchor="middle">Colo do fêmur</text>
+  <text x="650" y="655" text-anchor="middle">Cabeça do fêmur</text>
+</g>
+<g font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="500" fill="#6C7E7B">
+  <text x="330" y="273" text-anchor="end">o anel de vedação</text>
+  <text x="330" y="353" text-anchor="end">a saliência da lateral</text>
+  <text x="330" y="543" text-anchor="end">o osso da coxa</text>
+  <text x="900" y="259" text-anchor="start">o encaixe</text>
+  <text x="900" y="375" text-anchor="start">a superfície que se desgasta</text>
+  <text x="650" y="678" text-anchor="middle">a bola da articulação</text>
+</g>
+</svg>

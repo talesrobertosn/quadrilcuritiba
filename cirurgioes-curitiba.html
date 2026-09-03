@@ -4,8 +4,8 @@
 <script>document.documentElement.classList.add("js");</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cirurgiões de Quadril em Curitiba</title>
-<meta name="description" content="Espaço de indicação de cirurgiões de quadril em Curitiba. Profissional que cuida do quadril e quer aparecer? Entre em contato por e-mail.">
+<title>Cirurgião de Quadril em Curitiba: Onde Encontrar</title>
+<meta name="description" content="Espaço gratuito de indicação de cirurgiões e especialistas em quadril em Curitiba. É um profissional da área e quer aparecer aqui? Escreva para o site.">
 <link rel="canonical" href="https://quadrilcuritiba.com.br/cirurgioes-curitiba.html">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="article">
@@ -23,8 +23,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,540;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+
 /* =========================================================
-   Quadril Curitiba — sistema de design v2
+   Quadril Curitiba — sistema de design v3
    "Calma clínica, premium e clara"
    ========================================================= */
 
@@ -51,6 +52,7 @@
   --shadow-sm:0 1px 2px rgba(16,48,46,.04), 0 2px 8px rgba(16,48,46,.05);
   --shadow:0 6px 24px rgba(16,48,46,.08);
   --shadow-lg:0 14px 44px rgba(16,48,46,.12);
+  --shadow-xl:0 28px 80px rgba(16,48,46,.20);
   --maxw:1120px;
   --maxw-read:760px;
   --font-display:"Fraunces", Georgia, "Times New Roman", serif;
@@ -58,7 +60,7 @@
 }
 
 *{box-sizing:border-box;}
-html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%;}
+html{scroll-behavior:smooth;scroll-padding-top:92px;-webkit-text-size-adjust:100%;}
 body{
   margin:0;
   background:var(--bg);
@@ -70,10 +72,13 @@ body{
   text-rendering:optimizeLegibility;
   font-feature-settings:"kern" 1,"liga" 1;
 }
+body.no-scroll{overflow:hidden;}
 img,svg{max-width:100%;height:auto;display:block;}
 a{color:var(--primary);text-decoration:none;}
 a:hover{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px;}
 ::selection{background:var(--primary);color:#EFFBFA;}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--primary);color:#fff;padding:12px 20px;border-radius:0 0 12px 0;font-weight:600;}
+.skip:focus{left:0;text-decoration:none;}
 
 /* ---------- Tipografia ---------- */
 h1,h2,h3,h4{font-family:var(--font-display);color:var(--ink);line-height:1.15;font-weight:560;letter-spacing:-.01em;margin:0 0 .5em;text-wrap:balance;}
@@ -100,21 +105,31 @@ section{padding:clamp(46px,7vw,86px) 0;}
 /* ---------- Cabeçalho ---------- */
 .site-header{position:sticky;top:0;z-index:50;background:rgba(246,249,249,.86);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(16,48,46,.03),0 6px 20px rgba(16,48,46,.05);transition:box-shadow .25s var(--ease),background .25s var(--ease);}
 .site-header.scrolled{box-shadow:0 4px 24px rgba(16,48,46,.11);background:rgba(246,249,249,.97);}
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:22px;height:72px;}
+.header-inner{display:flex;align-items:center;gap:18px;height:72px;}
 .site-header .wrap{max-width:1240px;}
-.brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;font-size:1.2rem;color:var(--ink);letter-spacing:-.01em;transition:opacity .15s var(--ease);flex:0 0 auto;}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;font-size:1.2rem;color:var(--ink);letter-spacing:-.01em;transition:opacity .15s var(--ease);flex:0 0 auto;margin-right:auto;}
 .brand:hover{text-decoration:none;opacity:.85;}
 .brand .mark{width:36px;height:36px;flex:0 0 auto;border-radius:10px;box-shadow:0 3px 10px rgba(15,91,94,.26);transition:transform .3s var(--ease);}
 .brand:hover .mark{transform:rotate(-8deg);}
 .brand b{color:var(--primary);font-weight:600;}
-.nav{display:flex;align-items:center;gap:1px;border-left:1px solid var(--line);padding-left:14px;margin-left:2px;}
-.nav a{position:relative;color:var(--body);font-size:.92rem;font-weight:600;padding:10px 10px;white-space:nowrap;border-radius:9px;transition:background .15s var(--ease),color .15s var(--ease);}
-.nav a::after{content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .2s var(--ease);}
+.nav{display:flex;align-items:center;gap:2px;}
+.nav a{position:relative;color:var(--body);font-size:.94rem;font-weight:600;padding:10px 12px;white-space:nowrap;border-radius:9px;transition:background .15s var(--ease),color .15s var(--ease);}
+.nav a::after{content:"";position:absolute;left:13px;right:13px;bottom:4px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .2s var(--ease);}
 .nav a:hover{background:var(--mist);text-decoration:none;color:var(--ink);}
 .nav a:hover::after{transform:scaleX(1);}
-.nav a.active{color:var(--primary-dark);font-weight:600;background:var(--primary-tint);}
+.nav a.active{color:var(--primary-dark);background:var(--primary-tint);}
 .nav a.active::after{transform:scaleX(1);background:var(--primary);}
-.nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:9px;width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer;color:var(--ink);transition:border-color .15s var(--ease),background .15s var(--ease);}
+
+/* Botão de busca / navegação rápida */
+.hdr-tools{display:flex;align-items:center;gap:8px;flex:0 0 auto;margin-left:6px;padding-left:14px;border-left:1px solid var(--line);}
+.qs-open{display:inline-flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 10px 8px 13px;cursor:pointer;color:var(--muted);font-family:var(--font-body);font-size:.88rem;font-weight:500;box-shadow:var(--shadow-sm);transition:border-color .16s var(--ease),color .16s var(--ease),box-shadow .16s var(--ease),transform .16s var(--ease);}
+.qs-open:hover{border-color:#BFE0DD;color:var(--primary);box-shadow:var(--shadow);transform:translateY(-1px);}
+.qs-open svg{width:17px;height:17px;flex:0 0 auto;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;}
+.qs-open .qs-lbl{white-space:nowrap;}
+.kbd{font-family:var(--font-body);font-size:.72rem;font-weight:700;color:var(--muted);background:var(--mist);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:2px 6px;line-height:1.4;letter-spacing:.02em;}
+@media(max-width:1320px){.qs-open .qs-lbl,.qs-open .kbd{display:none;}.qs-open{padding:9px;border-radius:50%;}}
+
+.nav-toggle{display:none;background:var(--surface);border:1px solid var(--line);border-radius:9px;width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer;color:var(--ink);transition:border-color .15s var(--ease),background .15s var(--ease);}
 .nav-toggle:hover{background:var(--mist);border-color:#CDE2DF;}
 .nav-toggle svg{width:22px;height:22px;}
 .nav-toggle line{transition:transform .25s var(--ease),opacity .2s var(--ease);transform-origin:center;}
@@ -122,13 +137,52 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .nav-toggle[aria-expanded="true"] line:nth-child(2){opacity:0;}
 .nav-toggle[aria-expanded="true"] line:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
 
-@media(max-width:1220px){
+@media(max-width:900px){
   .nav-toggle{display:flex;}
   .nav{position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 14px 16px;gap:2px;box-shadow:var(--shadow);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.18s var(--ease);}
   .nav.open{transform:none;opacity:1;pointer-events:auto;}
-  .nav a{padding:12px 12px;border-radius:10px;font-size:.96rem;}
+  .nav a{padding:12px 12px;border-radius:10px;font-size:.98rem;}
   .nav a::after{display:none;}
+  .hdr-tools{border-left:0;padding-left:0;margin-left:0;}
 }
+
+/* ---------- Popup de navegação rápida ---------- */
+.qs{position:fixed;inset:0;z-index:120;display:none;padding:clamp(12px,7vh,90px) 16px 16px;}
+.qs.open{display:block;}
+.qs-veil{position:absolute;inset:0;background:rgba(12,38,37,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);animation:qsveil .22s var(--ease);}
+@keyframes qsveil{from{opacity:0;}to{opacity:1;}}
+.qs-panel{position:relative;max-width:620px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-xl);overflow:hidden;animation:qspanel .24s var(--ease);display:flex;flex-direction:column;max-height:min(78vh,620px);}
+@keyframes qspanel{from{opacity:0;transform:translateY(-12px) scale(.985);}to{opacity:1;transform:none;}}
+.qs-field{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line);flex:0 0 auto;}
+.qs-field svg{width:20px;height:20px;flex:0 0 auto;stroke:var(--primary);fill:none;stroke-width:2;stroke-linecap:round;}
+.qs-field input{flex:1;border:0;outline:0;background:none;font-family:var(--font-body);font-size:1.05rem;color:var(--ink);min-width:0;}
+.qs-field input::placeholder{color:var(--muted);}
+.qs-esc{background:none;border:1px solid var(--line);border-radius:8px;color:var(--muted);font-family:var(--font-body);font-size:.76rem;font-weight:700;padding:4px 8px;cursor:pointer;flex:0 0 auto;}
+.qs-esc:hover{color:var(--primary);border-color:#BFE0DD;}
+.qs-list{overflow-y:auto;padding:8px;margin:0;list-style:none;overscroll-behavior:contain;}
+.qs-group{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:12px 12px 6px;}
+.qs-item{display:flex;align-items:center;gap:13px;padding:11px 12px;border-radius:12px;color:var(--ink);cursor:pointer;transition:background .12s var(--ease);}
+.qs-item:hover,.qs-item.sel{background:var(--primary-tint);text-decoration:none;}
+.qs-item .qs-ico{width:34px;height:34px;flex:0 0 auto;border-radius:9px;background:linear-gradient(160deg,var(--primary-tint),#D3E9E6);color:var(--primary);display:grid;place-items:center;}
+.qs-item.sel .qs-ico{background:linear-gradient(160deg,#CDE7E4,#B9DDD9);}
+.qs-item .qs-ico svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+.qs-item .qs-txt{min-width:0;flex:1;}
+.qs-item .qs-t{display:block;font-weight:600;font-size:.98rem;line-height:1.3;}
+.qs-item .qs-d{display:block;font-size:.84rem;color:var(--muted);line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.qs-item .qs-go{flex:0 0 auto;color:var(--muted);opacity:0;transition:opacity .12s var(--ease);font-weight:700;}
+.qs-item.sel .qs-go,.qs-item:hover .qs-go{opacity:1;color:var(--primary);}
+.qs-empty{padding:34px 20px;text-align:center;color:var(--muted);font-size:.95rem;}
+.qs-foot{flex:0 0 auto;border-top:1px solid var(--line);padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:.78rem;color:var(--muted);background:linear-gradient(180deg,#FDFEFE,var(--surface));}
+.qs-foot span{display:inline-flex;align-items:center;gap:6px;}
+@media(max-width:700px){.qs-foot{display:none;}.qs-panel{max-height:88vh;}}
+html:not(.js) .qs-open{display:none;}
+
+/* ---------- Voltar ao topo ---------- */
+.totop{position:fixed;right:18px;bottom:18px;z-index:60;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--primary);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow);opacity:0;transform:translateY(10px) scale(.9);pointer-events:none;transition:.22s var(--ease);}
+.totop.on{opacity:1;transform:none;pointer-events:auto;}
+.totop:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
+.totop svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+@media print{.totop{display:none;}}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;overflow:hidden;background:
@@ -136,6 +190,8 @@ section{padding:clamp(46px,7vw,86px) 0;}
   radial-gradient(900px 460px at -12% 30%, rgba(15,91,94,.10), transparent 55%),
   linear-gradient(180deg,var(--primary-tint) 0%, var(--mist) 60%, var(--bg) 100%);
   padding:clamp(48px,7vw,90px) 0 clamp(40px,6vw,72px);}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;background-image:radial-gradient(rgba(15,91,94,.07) 1px, transparent 1px);background-size:26px 26px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.6),transparent 72%);mask-image:linear-gradient(180deg,rgba(0,0,0,.6),transparent 72%);}
+.hero > .wrap{position:relative;z-index:1;}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center;}
 .hero h1{margin-bottom:.35em;}
 .hero .lead{margin-bottom:1.6em;color:var(--body);}
@@ -144,6 +200,9 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .hero-art .brandshot{position:relative;max-width:430px;margin-inline:auto;display:grid;place-items:center;padding:clamp(18px,4vw,38px);}
 .hero-art .brandshot::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 52% 44%, #FFFFFF 0%, #EFF7F6 55%, rgba(221,237,235,0) 78%);}
 .hero-art .brandshot img{position:relative;width:100%;max-width:340px;height:auto;filter:drop-shadow(0 16px 34px rgba(15,91,94,.14));}
+.trustrow{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;padding-top:22px;border-top:1px solid rgba(15,91,94,.12);}
+.trustrow span{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;font-weight:500;color:var(--muted);}
+.trustrow svg{width:17px;height:17px;flex:0 0 auto;stroke:var(--primary);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 @media(max-width:820px){
   .hero-grid{grid-template-columns:1fr;}
   .hero-art{order:-1;max-width:320px;margin-inline:auto;}
@@ -177,7 +236,7 @@ section{padding:clamp(46px,7vw,86px) 0;}
 @media(max-width:620px){.toc ol{columns:1;}}
 
 /* ---------- Conteúdo de artigo ---------- */
-.prose h2{margin-top:2em;scroll-margin-top:88px;position:relative;padding-top:16px;}
+.prose h2{margin-top:2em;scroll-margin-top:96px;position:relative;padding-top:16px;}
 .prose h2::before{content:"";position:absolute;top:0;left:0;width:36px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--accent),rgba(217,145,43,0));}
 .prose h3{margin-top:1.5em;}
 .prose ul{margin:0 0 1.2em;padding:0;list-style:none;}
@@ -191,6 +250,9 @@ section{padding:clamp(46px,7vw,86px) 0;}
 /* ---------- Figuras ---------- */
 .revdate{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;color:var(--muted);margin-top:20px;letter-spacing:.01em;}
 .revdate svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;}
+.metaline{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin-top:20px;font-size:.85rem;color:var(--muted);}
+.metaline span{display:inline-flex;align-items:center;gap:7px;}
+.metaline svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;}
 .post-fig{margin:2em 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:var(--surface);}
 .post-fig img{width:100%;display:block;}
 .post-fig .figscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
@@ -218,7 +280,9 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .card.linked:focus-within{outline:3px solid var(--accent);outline-offset:3px;}
 .card .more::after{content:"→";display:inline-block;transition:transform .18s var(--ease);}
 .card:hover .more::after{transform:translateX(4px);}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;box-shadow:var(--shadow-sm);transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease);display:flex;flex-direction:column;}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;box-shadow:var(--shadow-sm);transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease);display:flex;flex-direction:column;overflow:hidden;}
+.card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--primary),#7FC4C2 60%,var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .28s var(--ease);}
+.card:hover::before{transform:scaleX(1);}
 .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:#CDE2DF;}
 .card .ico{width:42px;height:42px;border-radius:11px;background:linear-gradient(160deg,var(--primary-tint),#D3E9E6);display:flex;align-items:center;justify-content:center;margin-bottom:15px;color:var(--primary);transition:transform .25s var(--ease);}
 .card .ico svg{width:23px;height:23px;}
@@ -230,7 +294,49 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .card .more{margin-top:auto;font-weight:600;font-size:.95rem;color:var(--primary);display:inline-flex;align-items:center;gap:7px;}
 .card a.cardlink{position:absolute;}
 .card.linked{position:relative;}
-.card.linked > a.stretch{position:absolute;inset:0;border-radius:var(--radius);}
+.card.linked > a.stretch{position:absolute;inset:0;border-radius:var(--radius);z-index:2;}
+
+/* ---------- Índice de artigos (blog) ---------- */
+.chipbar{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 30px;}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);color:var(--body);font-family:var(--font-body);font-size:.9rem;font-weight:600;padding:9px 16px;border-radius:999px;cursor:pointer;box-shadow:var(--shadow-sm);transition:.16s var(--ease);}
+.chip:hover{border-color:#BFE0DD;color:var(--primary);transform:translateY(-1px);}
+.chip[aria-pressed="true"]{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:0 4px 14px rgba(15,91,94,.24);}
+.chip .ct{font-size:.76rem;font-weight:700;opacity:.72;}
+html:not(.js) .chipbar{display:none;}
+
+.artgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
+.post{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px 24px 22px;box-shadow:var(--shadow-sm);transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease);overflow:hidden;}
+.post::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--primary),#7FC4C2);transform:scaleY(0);transform-origin:top;transition:transform .28s var(--ease);}
+.post:hover::before{transform:scaleY(1);}
+.post:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:#CDE2DF;}
+.post:focus-within{outline:3px solid var(--accent);outline-offset:3px;}
+.post-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.post-ico{width:38px;height:38px;flex:0 0 auto;border-radius:10px;background:linear-gradient(160deg,var(--primary-tint),#D3E9E6);color:var(--primary);display:grid;place-items:center;}
+.post-ico svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.post-ico.a{background:linear-gradient(160deg,var(--accent-soft),#F3DBA9);color:#9C6A1E;}
+.post-ico.r{background:linear-gradient(160deg,var(--alert-soft),#F3D2C6);color:var(--alert);}
+.post .tag{font-size:.71rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+.post h3{font-size:1.16rem;margin-bottom:.35em;line-height:1.25;}
+.post h3 a{color:var(--ink);}
+.post h3 a:hover{color:var(--primary);text-decoration:none;}
+.post h3 a::after{content:"";position:absolute;inset:0;}
+.post p{font-size:.95rem;color:var(--muted);margin-bottom:1em;}
+.post .pmeta{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.8rem;color:var(--muted);padding-top:12px;border-top:1px solid var(--line);}
+.post .pmeta span{display:inline-flex;align-items:center;gap:6px;}
+.post .pmeta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;}
+.post.feat{background:linear-gradient(155deg,#FFFFFF,#F1F9F8);border-color:#CFE4E1;}
+.post.feat .tag{color:var(--primary);}
+.post.feat::before{transform:scaleY(1);}
+.noresult{display:none;padding:40px 10px;text-align:center;color:var(--muted);}
+.noresult.on{display:block;}
+
+/* ---------- Leia também ---------- */
+.related{margin-top:44px;padding-top:30px;border-top:1px solid var(--line);}
+.related h2{font-family:var(--font-body);font-size:.86rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.related-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
+.rel{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px 16px;box-shadow:var(--shadow-sm);color:var(--ink);font-weight:600;font-size:.95rem;line-height:1.3;transition:.18s var(--ease);}
+.rel:hover{text-decoration:none;transform:translateY(-2px);box-shadow:var(--shadow);border-color:#BFE0DD;color:var(--primary);}
+.rel svg{width:18px;height:18px;flex:0 0 auto;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 
 /* ---------- Bloco alternado (imagem + texto) ---------- */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,60px);align-items:center;}
@@ -259,6 +365,17 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px 20px 16px;box-shadow:var(--shadow-sm);}
 .stat b{display:block;font-family:var(--font-display);font-size:1.7rem;font-weight:560;color:var(--primary);line-height:1.1;margin-bottom:4px;}
 .stat span{font-size:.9rem;color:var(--muted);line-height:1.45;display:block;}
+
+/* ---------- Tabela comparativa ---------- */
+.tablewrap{margin:1.8em 0;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow-sm);overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tablewrap table{border-collapse:collapse;width:100%;min-width:520px;font-size:.95rem;}
+.tablewrap caption{caption-side:bottom;text-align:left;font-size:.84rem;color:var(--muted);padding:12px 18px;border-top:1px solid var(--line);background:linear-gradient(180deg,#FDFEFE,var(--surface));}
+.tablewrap th,.tablewrap td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--line);vertical-align:top;}
+.tablewrap thead th{background:var(--mist);font-family:var(--font-body);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--primary-dark);border-bottom:1px solid #CDE2DF;white-space:nowrap;}
+.tablewrap tbody tr:last-child td{border-bottom:0;}
+.tablewrap tbody tr:hover{background:#FAFDFC;}
+.tablewrap td strong{color:var(--ink);}
+.tablewrap th[scope="row"]{font-weight:600;color:var(--ink);background:#FBFDFD;}
 
 /* ---------- FAQ ---------- */
 .faq details{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);margin-bottom:12px;overflow:hidden;transition:border-color .18s var(--ease),box-shadow .18s var(--ease);}
@@ -312,7 +429,7 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .site-footer::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),#7FC4C2 55%,var(--accent));opacity:.85;}
 .site-footer a{color:#C6D6D4;}
 .site-footer a:hover{color:#fff;}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:34px;}
 .footer-grid h4{color:#fff;font-family:var(--font-body);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:14px;}
 .footer-grid ul{list-style:none;margin:0;padding:0;}
 .footer-grid li{margin-bottom:9px;}
@@ -320,17 +437,20 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .footer-brand .mark{width:30px;height:30px;border-radius:8px;}
 .disclaimer{font-size:.82rem;color:#92A8A5;line-height:1.6;}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:34px;padding-top:22px;font-size:.82rem;color:#92A8A5;display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;}
-@media(max-width:720px){.footer-grid{grid-template-columns:1fr;gap:26px;}}
+@media(max-width:940px){.footer-grid{grid-template-columns:1fr 1fr;gap:28px;}}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr;gap:26px;}}
 
 /* ---------- Animação de entrada ---------- */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease), transform .6s var(--ease);}
 .reveal.in{opacity:1;transform:none;}
+html:not(.js) .reveal{opacity:1;transform:none;}
 
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
   .reveal{opacity:1;transform:none;transition:none;}
-  .btn:hover,.card:hover,.toc li a:hover{transform:none;}
+  .btn:hover,.card:hover,.toc li a:hover,.post:hover,.rel:hover,.chip:hover{transform:none;}
   .readbar{display:none;}
+  .qs-panel,.qs-veil{animation:none;}
 }
 
 /* ---------- Foco acessível ---------- */
@@ -338,9 +458,10 @@ section{padding:clamp(46px,7vw,86px) 0;}
 
 /* ---------- Impressão ---------- */
 @media print{
-  .site-header,.site-footer,.surgeon,.nav-toggle,.readbar{display:none !important;}
+  .site-header,.site-footer,.surgeon,.nav-toggle,.readbar,.qs,.totop,.chipbar,.related{display:none !important;}
   body{background:#fff;font-size:12pt;}
   .reveal{opacity:1;transform:none;}
+  .tablewrap{box-shadow:none;overflow:visible;}
 }
 
 /* ---------- Utilidades ---------- */
@@ -349,39 +470,45 @@ section{padding:clamp(46px,7vw,86px) 0;}
 .muted{color:var(--muted);}
 .maxread{max-width:var(--maxw-read);margin-inline:auto;}
 .stack-lg > * + *{margin-top:clamp(46px,7vw,86px);}
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 
 </style>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","headline":"Cirurgiões de quadril em Curitiba","inLanguage":"pt-BR","url":"https://quadrilcuritiba.com.br/cirurgioes-curitiba.html","dateModified":"2026-08-16","publisher":{"@type":"Organization","name":"Quadril Curitiba","url":"https://quadrilcuritiba.com.br/"}}
+{"@context":"https://schema.org","@type":"WebPage","headline":"Cirurgiões de quadril em Curitiba","inLanguage":"pt-BR","url":"https://quadrilcuritiba.com.br/cirurgioes-curitiba.html","dateModified":"2026-09-03","publisher":{"@type":"Organization","name":"Quadril Curitiba","url":"https://quadrilcuritiba.com.br/"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://quadrilcuritiba.com.br/"},{"@type":"ListItem","position":2,"name":"Cirurgiões de quadril em Curitiba","item":"https://quadrilcuritiba.com.br/cirurgioes-curitiba.html"}]}
 </script>
 </head>
 <body>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0F5B5E"/><path d="M11 32 a22 22 0 0 1 22 -22" fill="none" stroke="#7FC4C2" stroke-width="4.5" stroke-linecap="round" opacity=".5"/><path d="M15 30 a17 17 0 0 1 17 -17" fill="none" stroke="#EAF3F2" stroke-width="7" stroke-linecap="round"/><circle cx="39" cy="31" r="12.5" fill="#F3FAF9"/><circle cx="39" cy="31" r="12.5" fill="none" stroke="#D9912B" stroke-width="3"/><path d="M45.5 41.5 q6.5 7.5 4 15.5" fill="none" stroke="#EAF3F2" stroke-width="7" stroke-linecap="round"/></svg> Quadril <b>Curitiba</b></a>
+    <nav class="nav" id="site-nav" aria-label="Principal">
+      <a href="artigos.html">Artigos</a>
+      <a href="artrose-de-quadril.html">Artrose</a>
+      <a href="protese-de-quadril.html">Prótese</a>
+      <a href="quanto-custa-protese-de-quadril.html">Custos</a>
+      <a href="dor-no-quadril.html">Dor no quadril</a>
+      <a href="cirurgioes-curitiba.html">Cirurgiões</a>
+    </nav>
+    <div class="hdr-tools">
+      <button type="button" class="qs-open" aria-label="Abrir a navegação rápida" aria-expanded="false" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+        <span class="qs-lbl">Buscar</span>
+        <span class="kbd">Ctrl K</span>
+      </button>
+    </div>
     <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-nav">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
-    <nav class="nav" id="site-nav" aria-label="Principal">
-      <a href="protese-de-quadril.html">Prótese</a>
-      <a href="quanto-custa-protese-de-quadril.html">Custos</a>
-      <a href="recuperacao-protese-de-quadril.html">Recuperação</a>
-      <a href="artrose-de-quadril.html">Artrose</a>
-      <a href="como-aliviar-dor-artrose-quadril.html">Aliviar dor</a>
-      <a href="dor-no-quadril.html">Dor no quadril</a>
-      <a href="bursite-no-quadril.html">Bursite</a>
-      <a href="fratura-de-quadril-no-idoso.html">Fratura</a>
-      <a href="cirurgioes-curitiba.html">Cirurgiões</a>
-    </nav>
   </div>
 </header>
-<main>
+<main id="conteudo">
 <section class="section-tint" style="padding:clamp(40px,6vw,72px) 0;"><div class="wrap read">
-    <p class="crumbs reveal"><a href="index.html">Início</a> &rsaquo; Cirurgiões em Curitiba</p>
+    <p class="crumbs reveal"><a href="index.html">Início</a> &rsaquo; <a href="artigos.html">Artigos</a> &rsaquo; Cirurgiões em Curitiba</p>
     <span class="pill reveal">Cirurgiões em Curitiba</span>
     <h1 class="reveal">Cirurgiões de quadril em Curitiba</h1>
     <p class="lead reveal">Um espaço dedicado a aproximar pacientes e profissionais que cuidam do quadril na cidade.</p></div></section><section><div class="wrap read prose">
@@ -409,21 +536,30 @@ section{padding:clamp(46px,7vw,86px) 0;}
         <p class="disclaimer">Conteúdo de caráter exclusivamente informativo e educativo. Não substitui a consulta, o diagnóstico ou o tratamento por um médico. Em caso de dor ou sintomas, procure um ortopedista.</p>
       </div>
       <div>
-        <h4>Temas</h4>
+        <h4>Dor e diagnóstico</h4>
+        <ul>
+          <li><a href="dor-no-quadril.html">Dor no quadril</a></li>
+          <li><a href="dor-na-virilha.html">Dor na virilha</a></li>
+          <li><a href="bursite-no-quadril.html">Bursite e tendinite</a></li>
+          <li><a href="artrose-de-quadril.html">Coxartrose (artrose)</a></li>
+          <li><a href="como-aliviar-dor-artrose-quadril.html">Como aliviar a dor</a></li>
+          <li><a href="fratura-de-quadril-no-idoso.html">Fratura no idoso</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Cirurgia e prótese</h4>
         <ul>
           <li><a href="protese-de-quadril.html">Prótese de quadril</a></li>
           <li><a href="quanto-custa-protese-de-quadril.html">Quanto custa a prótese</a></li>
+          <li><a href="artroscopia-de-quadril.html">Artroscopia de quadril</a></li>
           <li><a href="recuperacao-protese-de-quadril.html">Recuperação</a></li>
-          <li><a href="artrose-de-quadril.html">Coxartrose (artrose)</a></li>
-          <li><a href="como-aliviar-dor-artrose-quadril.html">Como aliviar a dor</a></li>
-          <li><a href="dor-no-quadril.html">Dor no quadril</a></li>
-          <li><a href="bursite-no-quadril.html">Bursite e tendinite no quadril</a></li>
-          <li><a href="fratura-de-quadril-no-idoso.html">Fratura de quadril no idoso</a></li>
+          <li><a href="protese-de-quadril-vale-a-pena.html">A prótese vale a pena?</a></li>
         </ul>
       </div>
       <div>
         <h4>O site</h4>
         <ul>
+          <li><a href="artigos.html">Todos os artigos</a></li>
           <li><a href="cirurgioes-curitiba.html">Cirurgiões em Curitiba</a></li>
           <li><a href="sobre.html">Sobre</a></li>
           <li><a href="privacidade.html">Privacidade</a></li>
@@ -439,9 +575,11 @@ section{padding:clamp(46px,7vw,86px) 0;}
 <script>
 /* Quadril Curitiba — interações mínimas */
 (function () {
-  // Menu mobile
-  var toggle = document.querySelector('.nav-toggle');
-  var nav = document.getElementById('site-nav');
+  var d = document;
+
+  // ---------- Menu mobile ----------
+  var toggle = d.querySelector('.nav-toggle');
+  var nav = d.getElementById('site-nav');
   if (toggle && nav) {
     toggle.addEventListener('click', function () {
       var open = nav.classList.toggle('open');
@@ -455,8 +593,8 @@ section{padding:clamp(46px,7vw,86px) 0;}
     });
   }
 
-  // Cabeçalho: sombra ao rolar
-  var header = document.querySelector('.site-header');
+  // ---------- Cabeçalho: sombra ao rolar ----------
+  var header = d.querySelector('.site-header');
   if (header) {
     var paintHeader = function () {
       header.classList.toggle('scrolled', window.scrollY > 8);
@@ -465,17 +603,24 @@ section{padding:clamp(46px,7vw,86px) 0;}
     paintHeader();
   }
 
-  // Nav: destaca a página atual
+  // ---------- Nav: destaca a página atual ----------
   var here = location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav a').forEach(function (a) {
+  var casou = false;
+  d.querySelectorAll('.nav a').forEach(function (a) {
     if (a.getAttribute('href') === here) {
       a.classList.add('active');
       a.setAttribute('aria-current', 'page');
+      casou = true;
     }
   });
+  // Página de conteúdo que não está no menu: destaca a biblioteca
+  if (!casou && here !== 'index.html') {
+    var lib = d.querySelector('.nav a[href="artigos.html"]');
+    if (lib) lib.classList.add('active');
+  }
 
-  // Animação de entrada
-  var els = document.querySelectorAll('.reveal');
+  // ---------- Animação de entrada ----------
+  var els = d.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && els.length) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -490,16 +635,29 @@ section{padding:clamp(46px,7vw,86px) 0;}
     els.forEach(function (el) { el.classList.add('in'); });
   }
 
-  // Barra de progresso de leitura
-  var bar = document.createElement('div');
+  // ---------- Barra de progresso de leitura ----------
+  var bar = d.createElement('div');
   bar.className = 'readbar';
   bar.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(bar);
+  d.body.appendChild(bar);
+
+  // ---------- Voltar ao topo ----------
+  var top = d.createElement('button');
+  top.type = 'button';
+  top.className = 'totop';
+  top.setAttribute('aria-label', 'Voltar ao topo da página');
+  top.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>';
+  top.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  d.body.appendChild(top);
+
   var ticking = false;
   function paint() {
-    var h = document.documentElement;
+    var h = d.documentElement;
     var max = h.scrollHeight - h.clientHeight;
     bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    top.classList.toggle('on', h.scrollTop > 700);
     ticking = false;
   }
   window.addEventListener('scroll', function () {
@@ -507,8 +665,8 @@ section{padding:clamp(46px,7vw,86px) 0;}
   }, { passive: true });
   paint();
 
-  // Copiar e-mail de contato (mailto nem sempre abre em desktop)
-  var copyBtns = document.querySelectorAll('[data-copy]');
+  // ---------- Copiar e-mail de contato ----------
+  var copyBtns = d.querySelectorAll('[data-copy]');
   copyBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
       var value = btn.getAttribute('data-copy');
@@ -519,30 +677,267 @@ section{padding:clamp(46px,7vw,86px) 0;}
         note.textContent = 'E-mail copiado';
         setTimeout(function () { note.classList.remove('on'); }, 2600);
       }
+      function fallback() {
+        var ta = d.createElement('textarea');
+        ta.value = value;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'absolute';
+        ta.style.left = '-9999px';
+        d.body.appendChild(ta);
+        ta.select();
+        try { d.execCommand('copy'); done(); } catch (e) {
+          if (note) { note.classList.add('on'); note.textContent = 'Selecione e copie: ' + value; }
+        }
+        d.body.removeChild(ta);
+      }
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(value).then(done, fallback);
       } else {
         fallback();
       }
-      function fallback() {
-        var ta = document.createElement('textarea');
-        ta.value = value;
-        ta.setAttribute('readonly', '');
-        ta.style.position = 'absolute';
-        ta.style.left = '-9999px';
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand('copy'); done(); } catch (e) {
-          if (note) { note.classList.add('on'); note.textContent = 'Selecione e copie: ' + value; }
-        }
-        document.body.removeChild(ta);
-      }
     });
   });
 
-  // Ano automático no rodapé
-  var y = document.querySelectorAll('[data-year]');
-  y.forEach(function (n) { n.textContent = new Date().getFullYear(); });
+  // ---------- Ano automático no rodapé ----------
+  d.querySelectorAll('[data-year]').forEach(function (n) {
+    n.textContent = new Date().getFullYear();
+  });
+
+  // ---------- Filtro do índice de artigos ----------
+  var chips = d.querySelectorAll('.chip[data-filter]');
+  if (chips.length) {
+    var posts = d.querySelectorAll('.post[data-eixo]');
+    var none = d.querySelector('.noresult');
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var f = chip.getAttribute('data-filter');
+        chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+        var shown = 0;
+        posts.forEach(function (p) {
+          var ok = f === 'todos' || p.getAttribute('data-eixo') === f;
+          p.hidden = !ok;
+          if (ok) shown++;
+        });
+        if (none) none.classList.toggle('on', shown === 0);
+      });
+    });
+  }
+
+  // ---------- Navegação rápida (popup de busca) ----------
+  var ICO = {
+    dor: '<path d="M12 21s-7-4.7-7-10a7 7 0 0 1 14 0c0 5.3-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/>',
+    doc: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/>',
+    cut: '<path d="M4 5l10 10"/><path d="M20 5L10 15"/><circle cx="7" cy="18" r="2.6"/><circle cx="17" cy="18" r="2.6"/>',
+    cost: '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M8 15h4"/>',
+    beat: '<path d="M3 12h4l2 6 4-12 2 6h6"/>',
+    home: '<path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/>',
+    list: '<path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3.6" cy="6" r="1.3"/><circle cx="3.6" cy="12" r="1.3"/><circle cx="3.6" cy="18" r="1.3"/>',
+    info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="7.8" r="1"/>',
+    hash: '<path d="M5 9h14M5 15h14M10 4l-2 16M16 4l-2 16"/>'
+  };
+
+  var PAGES = [
+    { u: 'index.html', t: 'Início', d: 'Guia de saúde do quadril, do sintoma à cirurgia', g: 'Site', i: 'home', k: 'home inicio principal guia quadril curitiba' },
+    { u: 'artigos.html', t: 'Todos os artigos', d: 'Índice completo do conteúdo, por tema', g: 'Site', i: 'list', k: 'artigos blog indice lista conteudo temas todos' },
+    { u: 'dor-no-quadril.html', t: 'Dor no quadril', d: 'Causas comuns e quando se preocupar', g: 'Dor e sintomas', i: 'dor', k: 'dor quadril causas doi doer lado esquerdo direito sintoma nadega lateral coxa mancando' },
+    { u: 'dor-na-virilha.html', t: 'Dor na virilha', d: 'Por que a artrose do quadril dói na virilha', g: 'Dor e sintomas', i: 'dor', k: 'virilha ingua inguinal dor andar levantar cadeira calcar meia hernia pubalgia adutor joelho irradiada dois lados bilateral gravidez' },
+    { u: 'bursite-no-quadril.html', t: 'Bursite e tendinite no quadril', d: 'Dor na lateral: quase nunca é só bursite', g: 'Dor e sintomas', i: 'dor', k: 'bursite tendinite tendinopatia lateral trocanter trocanterica gluteo dormir de lado dor lateral infiltracao ondas de choque tratamento' },
+    { u: 'como-aliviar-dor-artrose-quadril.html', t: 'Como aliviar a dor da artrose', d: 'O que funciona, o que funciona pouco e o que não tem evidência', g: 'Dor e sintomas', i: 'beat', k: 'aliviar alivio dor artrose exercicio remedio anti-inflamatorio colageno suplemento peso bengala dormir calor gelo infiltracao fisioterapia' },
+    { u: 'artrose-de-quadril.html', t: 'Coxartrose (artrose do quadril)', d: 'Sintomas, graus e tratamento', g: 'Diagnóstico', i: 'doc', k: 'coxartrose artrose artrosis desgaste cartilagem graus grau 2 3 4 tem cura bilateral diagnostico raio x é grave imagens' },
+    { u: 'fratura-de-quadril-no-idoso.html', t: 'Fratura de quadril no idoso', d: 'Cirurgia, recuperação e prognóstico', g: 'Diagnóstico', i: 'doc', k: 'fratura femur colo idoso idosa queda urgencia internacao mortalidade transtrocanterica quebrou o quadril bacia' },
+    { u: 'protese-de-quadril.html', t: 'Prótese de quadril', d: 'O que é, tipos, durabilidade e riscos', g: 'Cirurgia', i: 'cut', k: 'protese prótese artroplastia quadril tipos cimentada nao cimentada titanio ceramica polietileno durabilidade dura quanto tempo riscos luxacao' },
+    { u: 'quanto-custa-protese-de-quadril.html', t: 'Quanto custa a prótese de quadril', d: 'SUS, convênio e particular, com valores', g: 'Cirurgia', i: 'cost', k: 'quanto custa custo custos preco precos valor valores sus convenio plano particular nacional importada titanio ceramica cabeca do femur orcamento quanto sai barato caro' },
+    { u: 'artroscopia-de-quadril.html', t: 'Artroscopia de quadril', d: 'Impacto femoroacetabular e lesão do labrum', g: 'Cirurgia', i: 'cut', k: 'artroscopia labrum lesao do labrum impacto femoroacetabular fai cam pincer video cirurgia minimamente invasiva atleta esporte jovem' },
+    { u: 'protese-de-quadril-vale-a-pena.html', t: 'Prótese de quadril vale a pena?', d: 'O que muda 5 anos depois da cirurgia', g: 'Cirurgia', i: 'beat', k: 'vale a pena resultado 5 anos qualidade de vida satisfacao arrependimento' },
+    { u: 'recuperacao-protese-de-quadril.html', t: 'Recuperação da prótese', d: 'Linha do tempo, precauções e sinais de alerta', g: 'Recuperação', i: 'beat', k: 'recuperacao pos operatorio pos-operatorio fisioterapia reabilitacao luxacao dirigir trabalhar dormir de lado tempo muleta andador o que nao pode fazer' },
+    { u: 'cirurgioes-curitiba.html', t: 'Cirurgiões de quadril em Curitiba', d: 'Espaço gratuito de indicação', g: 'Site', i: 'info', k: 'cirurgiao especialista medico ortopedista quadril curitiba indicacao contato consulta onde procurar' },
+    { u: 'sobre.html', t: 'Sobre o site', d: 'Como o conteúdo é feito', g: 'Site', i: 'info', k: 'sobre quem somos proposito editorial' },
+    { u: 'privacidade.html', t: 'Privacidade', d: 'Dados, cookies e LGPD', g: 'Site', i: 'info', k: 'privacidade lgpd cookies dados' }
+  ];
+
+  var TOPICS = [
+    { u: 'quanto-custa-protese-de-quadril.html#sus', t: 'Prótese de quadril pelo SUS', d: 'É gratuita? Como funciona a fila', g: 'Respostas rápidas', i: 'cost', k: 'sus gratuito fila publico gratuita governo' },
+    { u: 'quanto-custa-protese-de-quadril.html#convenio', t: 'O plano de saúde é obrigado a cobrir?', d: 'Cobertura, rol da ANS e negativas', g: 'Respostas rápidas', i: 'cost', k: 'plano convenio ans cobertura obrigatoria negativa unimed reembolso' },
+    { u: 'quanto-custa-protese-de-quadril.html#nacional-importada', t: 'Prótese nacional ou importada', d: 'O que muda no preço e no resultado', g: 'Respostas rápidas', i: 'cost', k: 'nacional importada nacional x importada diferenca preco marca fabricante' },
+    { u: 'quanto-custa-protese-de-quadril.html#materiais', t: 'Prótese de titânio e de cerâmica', d: 'O que o material realmente significa', g: 'Respostas rápidas', i: 'cost', k: 'titanio ceramica material metal polietileno par de atrito' },
+    { u: 'quanto-custa-protese-de-quadril.html#parcial', t: 'Prótese só da cabeça do fêmur', d: 'A prótese parcial, e quando ela é usada', g: 'Respostas rápidas', i: 'cost', k: 'parcial hemiartroplastia cabeca do femur preco so a cabeca' },
+    { u: 'artrose-de-quadril.html#cura', t: 'Coxartrose tem cura?', d: 'A resposta honesta', g: 'Respostas rápidas', i: 'doc', k: 'cura tem cura reverter cartilagem volta bilateral' },
+    { u: 'artrose-de-quadril.html#graus', t: 'Graus da coxartrose', d: 'Grau 1, 2, 3 e 4 no laudo', g: 'Respostas rápidas', i: 'doc', k: 'grau graus leve moderada avancada 1 2 3 4 laudo classificacao' },
+    { u: 'protese-de-quadril.html#durabilidade', t: 'Quanto tempo dura uma prótese', d: 'Sobrevida em 10, 20 e 25 anos', g: 'Respostas rápidas', i: 'cut', k: 'dura durabilidade tempo de vida vida util 10 20 anos revisao troca' },
+    { u: 'recuperacao-protese-de-quadril.html#precaucoes', t: 'O que não pode fazer depois da prótese', d: 'Precauções de luxação', g: 'Respostas rápidas', i: 'beat', k: 'nao pode fazer proibido precaucoes luxacao cruzar pernas agachar sentar baixo' },
+    { u: 'recuperacao-protese-de-quadril.html#dirigir', t: 'Quando posso voltar a dirigir', d: 'E quando voltar ao trabalho', g: 'Respostas rápidas', i: 'beat', k: 'dirigir carro volante trabalhar voltar trabalho tempo' },
+    { u: 'como-aliviar-dor-artrose-quadril.html#colageno', t: 'Colágeno funciona para artrose?', d: 'O que a evidência mostra', g: 'Respostas rápidas', i: 'beat', k: 'colageno suplemento glucosamina condroitina funciona vale a pena' },
+    { u: 'como-aliviar-dor-artrose-quadril.html#bengala', t: 'Bengala: de que lado usar', d: 'Do lado contrário ao quadril que dói', g: 'Respostas rápidas', i: 'beat', k: 'bengala muleta lado certo esquerdo direito como usar' },
+    { u: 'como-aliviar-dor-artrose-quadril.html#dormir', t: 'Como dormir com dor no quadril', d: 'Posições e travesseiro', g: 'Respostas rápidas', i: 'beat', k: 'dormir noite posicao travesseiro deitar de lado insonia' },
+    { u: 'bursite-no-quadril.html#infiltracao', t: 'Infiltração funciona na bursite?', d: 'Funciona, mas por pouco tempo', g: 'Respostas rápidas', i: 'dor', k: 'infiltracao corticoide bloqueio injecao funciona bursite' },
+    { u: 'dor-na-virilha.html#joelho', t: 'Dor no quadril que aparece no joelho', d: 'Por que o cérebro erra o endereço', g: 'Respostas rápidas', i: 'dor', k: 'joelho dor no joelho irradia irradiada confunde nervo obturatorio' },
+    { u: 'artroscopia-de-quadril.html#evidencia', t: 'Artroscopia funciona mesmo?', d: 'Os números dos ensaios clínicos', g: 'Respostas rápidas', i: 'cut', k: 'artroscopia funciona resultado estudo ensaio fashion evidencia vale a pena' },
+    { u: 'fratura-de-quadril-no-idoso.html#tempo', t: 'Em quanto tempo operar uma fratura', d: 'Por que a pressa importa', g: 'Respostas rápidas', i: 'doc', k: 'quanto tempo operar fratura urgencia demora espera cirurgia idoso' }
+  ];
+
+  var opener = d.querySelector('.qs-open');
+  if (opener) {
+    var qs = d.createElement('div');
+    qs.className = 'qs';
+    qs.id = 'quick-search';
+    qs.innerHTML =
+      '<div class="qs-veil" data-close></div>' +
+      '<div class="qs-panel" role="dialog" aria-modal="true" aria-label="Navegação rápida">' +
+        '<div class="qs-field">' +
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>' +
+          '<input type="text" id="qs-input" autocomplete="off" autocapitalize="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="qs-list" aria-autocomplete="list" placeholder="Buscar um tema: prótese, virilha, custo...">' +
+          '<button type="button" class="qs-esc" data-close>ESC</button>' +
+        '</div>' +
+        '<ul class="qs-list" id="qs-list" role="listbox" aria-label="Resultados"></ul>' +
+        '<div class="qs-foot">' +
+          '<span><span class="kbd">&uarr;</span><span class="kbd">&darr;</span> navegar</span>' +
+          '<span><span class="kbd">Enter</span> abrir</span>' +
+          '<span><span class="kbd">Esc</span> fechar</span>' +
+        '</div>' +
+      '</div>';
+    d.body.appendChild(qs);
+
+    var input = qs.querySelector('#qs-input');
+    var list = qs.querySelector('#qs-list');
+    var sel = 0, items = [], lastFocus = null;
+
+    function norm(s) {
+      return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
+    // Seções da página atual, para pular direto ao trecho
+    var sections = [];
+    d.querySelectorAll('.prose h2[id], section h2[id]').forEach(function (h) {
+      var txt = h.textContent.replace(/\s+/g, ' ').trim();
+      if (txt) sections.push({ u: '#' + h.id, t: txt, d: 'Nesta página', g: 'Nesta página', i: 'hash', k: txt });
+    });
+
+    function score(entry, q) {
+      var t = norm(entry.t), k = norm(entry.k || ''), dd = norm(entry.d || '');
+      if (t.indexOf(q) === 0) return 100;
+      if (t.indexOf(q) > -1) return 70;
+      if (k.indexOf(q) > -1) return 45;
+      if (dd.indexOf(q) > -1) return 30;
+      var parts = q.split(/\s+/).filter(Boolean);
+      if (parts.length > 1 && parts.every(function (p) { return (t + ' ' + k + ' ' + dd).indexOf(p) > -1; })) return 20;
+      return 0;
+    }
+
+    function render(q) {
+      q = norm(q).trim();
+      var pool = sections.concat(PAGES, TOPICS);
+      var rows;
+      if (!q) {
+        rows = PAGES.slice();
+      } else {
+        rows = pool.map(function (e) { return { e: e, s: score(e, q) }; })
+          .filter(function (r) { return r.s > 0; })
+          .sort(function (a, b) { return b.s - a.s; })
+          .map(function (r) { return r.e; });
+      }
+      rows = rows.slice(0, 24);
+      list.innerHTML = '';
+      items = [];
+      if (!rows.length) {
+        list.innerHTML = '<li class="qs-empty">Nada encontrado. Tente “prótese”, “artrose”, “custo” ou “dor”.</li>';
+        return;
+      }
+      var group = null;
+      rows.forEach(function (e, idx) {
+        if (e.g !== group) {
+          group = e.g;
+          var gl = d.createElement('li');
+          gl.className = 'qs-group';
+          gl.setAttribute('aria-hidden', 'true');
+          gl.textContent = group;
+          list.appendChild(gl);
+        }
+        var li = d.createElement('li');
+        var a = d.createElement('a');
+        a.className = 'qs-item';
+        a.href = e.u;
+        a.setAttribute('role', 'option');
+        a.id = 'qs-opt-' + idx;
+        a.innerHTML =
+          '<span class="qs-ico"><svg viewBox="0 0 24 24" aria-hidden="true">' + (ICO[e.i] || ICO.doc) + '</svg></span>' +
+          '<span class="qs-txt"><span class="qs-t"></span><span class="qs-d"></span></span>' +
+          '<span class="qs-go" aria-hidden="true">&rarr;</span>';
+        a.querySelector('.qs-t').textContent = e.t;
+        a.querySelector('.qs-d').textContent = e.d;
+        a.addEventListener('mousemove', function () { mark(items.indexOf(a)); });
+        li.appendChild(a);
+        list.appendChild(li);
+        items.push(a);
+      });
+      mark(0);
+    }
+
+    function mark(i) {
+      if (!items.length) return;
+      sel = Math.max(0, Math.min(i, items.length - 1));
+      items.forEach(function (a, n) {
+        a.classList.toggle('sel', n === sel);
+        a.setAttribute('aria-selected', n === sel ? 'true' : 'false');
+      });
+      input.setAttribute('aria-activedescendant', items[sel].id);
+      var a = items[sel];
+      var box = list.getBoundingClientRect(), r = a.getBoundingClientRect();
+      if (r.bottom > box.bottom) list.scrollTop += r.bottom - box.bottom + 8;
+      if (r.top < box.top) list.scrollTop -= box.top - r.top + 8;
+    }
+
+    function open() {
+      lastFocus = d.activeElement;
+      qs.classList.add('open');
+      d.body.classList.add('no-scroll');
+      opener.setAttribute('aria-expanded', 'true');
+      input.value = '';
+      render('');
+      input.focus();
+    }
+    function close() {
+      qs.classList.remove('open');
+      d.body.classList.remove('no-scroll');
+      opener.setAttribute('aria-expanded', 'false');
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    opener.addEventListener('click', open);
+    d.querySelectorAll('[data-qs-open]').forEach(function (b) {
+      b.addEventListener('click', function (e) { e.preventDefault(); open(); });
+    });
+    qs.addEventListener('click', function (e) {
+      if (e.target.hasAttribute('data-close')) close();
+    });
+    input.addEventListener('input', function () { render(input.value); });
+    qs.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { e.preventDefault(); close(); }
+      else if (e.key === 'ArrowDown') { e.preventDefault(); mark(sel + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); mark(sel - 1); }
+      else if (e.key === 'Home' && items.length) { e.preventDefault(); mark(0); }
+      else if (e.key === 'End' && items.length) { e.preventDefault(); mark(items.length - 1); }
+      else if (e.key === 'Enter' && items[sel]) { e.preventDefault(); items[sel].click(); }
+      else if (e.key === 'Tab') { e.preventDefault(); }
+    });
+
+    d.addEventListener('keydown', function (e) {
+      var tag = (e.target.tagName || '').toLowerCase();
+      var typing = tag === 'input' || tag === 'textarea' || e.target.isContentEditable;
+      if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        qs.classList.contains('open') ? close() : open();
+      } else if (e.key === '/' && !typing && !qs.classList.contains('open')) {
+        e.preventDefault();
+        open();
+      }
+    });
+
+    // Mostra o atalho correto conforme o sistema
+    if (/Mac|iPhone|iPad/.test(navigator.platform || '')) {
+      var kb = opener.querySelector('.kbd');
+      if (kb) kb.textContent = '⌘K';
+    }
+  }
 })();
 
 </script>
