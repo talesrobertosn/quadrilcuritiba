@@ -2,9 +2,9 @@
 
 Documento de transferência de contexto. Leia inteiro antes de produzir qualquer coisa.
 
-**Próxima tarefa combinada: artigo sobre DOR NA VIRILHA.** Detalhes na seção 12.
+**Próxima tarefa combinada: expandir as páginas-pilar `protese-de-quadril.html` e `artrose-de-quadril.html`.** Detalhes na seção 19. A página de dor na virilha e a de artroscopia foram publicadas em 03/09/2026.
 
-**Atenção antes de rodar qualquer script:** leia a seção 18. Os arquivos `BUILD-design.css` e `styles.css` do repositório já estiveram desatualizados em relação ao CSS realmente embutido nas páginas, e rodar o `apply_polish.py` nessa condição reverte o design de todas as páginas de uma vez.
+**Atenção antes de rodar qualquer script:** leia as seções 18 e 19. Desde 03/09/2026 o build vive na pasta `build/` do repositório e o script de propagação é o `build/propagate.py`, que substituiu o antigo `apply_polish.py`. A fonte da verdade do CSS e do JS passou a ser `build/design.css` e `build/main.js`; `styles.css`, `main.js`, `BUILD-design.css` e `BUILD-main.js` na raiz são cópias de referência geradas a partir deles.
 
 ---
 
@@ -35,11 +35,14 @@ Site estático informativo de SEO local sobre saúde do quadril, em português d
 
 ---
 
-## 3. Estado atual: 13 páginas publicadas
+## 3. Estado atual: 16 páginas publicadas
 
 | Arquivo | Assunto | Termo-alvo principal |
 |---|---|---|
 | `index.html` | Home / hub | quadril Curitiba, guia |
+| `artigos.html` | Índice de todos os artigos (a "função blog") | — |
+| `dor-na-virilha.html` | Dor na virilha: por que a artrose dói ali e o diagnóstico diferencial | **dor na virilha** |
+| `artroscopia-de-quadril.html` | Artroscopia, impacto femoroacetabular e lesão do labrum | **artroscopia de quadril** |
 | `artrose-de-quadril.html` | Coxartrose: sintomas, graus, tratamento | **coxartrose** (pilar nº 1) |
 | `como-aliviar-dor-artrose-quadril.html` | Como aliviar a dor da artrose | como aliviar dor artrose quadril |
 | `protese-de-quadril.html` | O que é a artroplastia, tipos, riscos | **prótese de quadril** (pilar nº 2) |
@@ -424,3 +427,96 @@ E dizer algo como: "Vamos fazer o artigo sobre fratura de quadril no idoso. Leia
 **QA:** o script da seção 8 ganhou quatro verificações novas e deve substituir a versão antiga. Além dos testes originais, ele agora falha se: o título passar de 65 caracteres, a description passar de 160, faltar `BreadcrumbList` ou `dateModified`, houver mais de um `h1`, ou o FAQPage não espelhar exatamente as perguntas visíveis. Rodou limpo nas 13 páginas.
 
 **O maior gargalo de conteúdo que sobra, e a próxima grande alavanca:** as páginas-pilar estão magras para o que se quer ranquear. `protese-de-quadril.html` tem cerca de 1.230 palavras e é o alvo do termo número 2 do site; `recuperacao-protese-de-quadril.html` tem 980; `dor-no-quadril.html` tem 830; `artrose-de-quadril.html`, o pilar número 1, tem 1.820. Para comparação, a página de fratura tem 5.600 e a de bursite 6.850. Expandir `protese-de-quadril.html` e `artrose-de-quadril.html` ao padrão das duas páginas novas provavelmente rende mais posição do que qualquer artigo inédito da fila.
+
+---
+
+## 19. Registro da entrega de 03/09/2026 — virilha, artroscopia, biblioteca e busca
+
+Entrega grande, disparada por uma leitura do Search Console: em 3 meses, 794 impressões, 20 cliques, CTR de 2,5% e posição média 24,5. O diagnóstico foi que o gargalo do momento **não era falta de conteúdo, era CTR e cobertura de cauda longa** — as consultas com mais impressão (`coxartrose` com 27, `quanto custa uma prótese de quadril nacional` com 24, `bursite de quadril tratamento` com 11) estavam todas com zero clique.
+
+### O que mudou na arquitetura do build
+
+O antigo `apply_polish.py` foi aposentado. O build agora é uma pasta versionada no repositório:
+
+| Arquivo | O que faz |
+|---|---|
+| `build/design.css` | Sistema de design v3. **Fonte da verdade do CSS.** |
+| `build/main.js` | JS compartilhado. **Fonte da verdade do JS.** |
+| `build/parts.py` | Cabeçalho, rodapé, nav, marca e bloco de contato compartilhados |
+| `build/build.py` | Monta uma página de artigo inteira a partir de um dicionário |
+| `build/propagate.py` | Propaga CSS, JS, cabeçalho, rodapé, marca e migalhas para as 16 páginas |
+| `build/faqsync.py` | Regera todo FAQPage a partir do FAQ visível. Roda dentro do propagate |
+| `build/qa.py` | O QA da seção 8, com verificações novas |
+| `build/page_*.py` | Uma página nova, uma por arquivo |
+| `build/fig-*.svg` | Os diagramas vetoriais |
+| `build/shot.js`, `clip.js`, `uitest.js`, `qstest.js` | Testes visuais e de comportamento com Chromium headless |
+
+Sequência para trabalhar: editar `build/design.css` ou `build/main.js`, rodar `python3 build/propagate.py`, rodar `python3 build/qa.py`, copiar as referências (`cp build/design.css styles.css` e os `BUILD-*`), conferir com os scripts de screenshot.
+
+**Cuidado herdado da seção 18 que continua valendo, agora invertido:** como o `propagate.py` é a única forma de alterar o CSS embutido, nunca edite o `<style>` de uma página à mão. Se editar, a próxima propagação apaga a edição.
+
+**Cuidado novo:** o `faqsync.py` recria o `FAQPage` a partir dos `<details>` visíveis. Se você editar o texto de uma resposta do FAQ diretamente no HTML, rode o propagate depois para o schema voltar a espelhar. Nunca edite o JSON-LD de FAQ à mão.
+
+### Páginas novas
+
+**`dor-na-virilha.html`** — cerca de 6.100 palavras, 13 seções H2, 9 perguntas no FAQ, dois diagramas. Ângulo editorial: a articulação do quadril não fica onde as pessoas apontam, e é por isso que tanta gente com coxartrose passa meses tratando bursite, hérnia ou joelho. Cobre o sinal do C, os movimentos que denunciam (calçar meia é o mais revelador), a dor referida no joelho, dor bilateral, o diagnóstico diferencial completo (hérnia, adutores, pubalgia, iliopsoas, coluna lombar alta, fratura por estresse, causas urológicas e ginecológicas), gravidez e o acordo de Doha para atletas.
+
+**`artroscopia-de-quadril.html`** — cerca de 5.600 palavras, 16 seções H2, 9 perguntas no FAQ, um diagrama. Ângulo editorial, na mesma linha de honestidade com os números do resto do site: a artroscopia funciona, mas a vantagem sobre boa fisioterapia é **moderada**. Traz os números do UK FASHIoN (Lancet 2018, 348 pacientes, iHOT-33 de 58,8 contra 49,7, diferença ajustada de 6,8 pontos com IC de 1,7 a 11,9) deixando explícito que **os dois grupos melhoraram muito**, e martela o dado que quase nenhum site em português traz: morfologia cam em cerca de 37 em 100 assintomáticos e lesão de labrum em cerca de 69 em 100 pessoas sem dor. Conclusão editorial: laudo não é diagnóstico, e o filtro que separa bom resultado de frustração é sempre "quadril sem artrose".
+
+**`artigos.html`** — o índice de todo o conteúdo, com filtro por eixo temático (dor e sintomas, diagnóstico, cirurgia, recuperação), tempo de leitura, data de revisão e schema `CollectionPage` mais `ItemList`. É a "função blog" que faltava e virou o primeiro item da nav.
+
+### Expansão da página de custos
+
+`quanto-custa-protese-de-quadril.html` foi de 2.429 para 4.211 palavras, com quatro seções novas escritas diretamente contra as consultas do Search Console: prótese nacional ou importada, titânio e cerâmica e polietileno (com tabela dos pares de atrito), prótese parcial da cabeça do fêmur e a regra das três marcas no plano de saúde. Quatro perguntas novas no FAQ. Title e description reescritos.
+
+### Design v3
+
+- **Popup de navegação rápida** (`.qs`), aberto pelo botão do cabeçalho, por `Ctrl+K` ou `⌘K`, ou pela tecla `/`. Busca com normalização de acentos nas 16 páginas, em 17 atalhos curados para seções específicas e, dinamicamente, nos `<h2>` da própria página aberta. Navegação por setas, Enter e Esc, com `role="listbox"` e `aria-activedescendant`.
+- **Nav enxugada de 9 para 6 itens** (Artigos, Artrose, Prótese, Custos, Dor no quadril, Cirurgiões), com o resto do conteúdo alcançável pelo índice de artigos, pelo rodapé e pelo buscador. O breakpoint do menu mobile pôde voltar de 1220px para 900px. Em página de conteúdo que não está no menu, o JS destaca "Artigos".
+- **Rodapé de 3 para 4 colunas**, carregando as 11 páginas de conteúdo, o que preserva o link interno em todo o site apesar da nav menor.
+- Componentes novos: `.post` e `.artgrid` (cards do blog), `.chipbar` e `.chip` (filtros), `.related` (bloco "Leia também" ao fim dos artigos), `.tablewrap` (tabelas comparativas com rolagem horizontal), `.totop` (voltar ao topo), `.metaline` (tempo de leitura mais data), `.trustrow` (selos do hero), `.skip` (pular para o conteúdo).
+- Refinos: barra colorida que cresce no topo dos cards em hover, textura pontilhada discreta no hero, foco acessível revisto, `html:not(.js)` garantindo que o conteúdo apareça se o JS falhar.
+
+### Diagramas novos
+
+Três SVGs originais, inline nas páginas conforme o padrão da seção 18, nas cores da marca e com rótulos em português:
+
+| Arquivo | O que mostra | Onde está |
+|---|---|---|
+| `build/fig-anatomia.svg` | A articulação: pelve, acetábulo, labrum, cartilagem, cabeça e colo do fêmur, trocânter | `artroscopia-de-quadril.html`, `protese-de-quadril.html` |
+| `build/fig-zonas.svg` | As três regiões de dor (virilha, lateral, nádega) e o que cada uma sugere, de frente e de trás | `dor-na-virilha.html`, `dor-no-quadril.html` |
+| `build/fig-irradiacao.svg` | O trajeto da dor da coxartrose: virilha, frente da coxa, joelho | `dor-na-virilha.html`, `artrose-de-quadril.html` |
+
+O usuário havia enviado três imagens de referência coladas no chat (um esquema anatômico com rótulos em inglês e duas renderizações 3D). Elas não chegaram como arquivo ao ambiente, e além disso eram de terceiros e com texto em inglês. Os SVGs acima foram desenhados do zero para cumprir a mesma função, com a vantagem de serem próprios, em português e independentes de arquivo externo.
+
+### Títulos e descrições reescritos para CTR
+
+| Página | Título novo | Por quê |
+|---|---|---|
+| `artrose-de-quadril.html` | Coxartrose (Artrose do Quadril): Graus, Tem Cura e Tratamento | "tem cura" e "graus" são consultas reais com impressão |
+| `bursite-no-quadril.html` | Bursite no Quadril: Tratamento e Por Que Quase Nunca É Bursite | gancho de curiosidade sobre o achado dos 8% |
+| `quanto-custa-protese-de-quadril.html` | Quanto Custa uma Prótese de Quadril? Valores Reais no Brasil | promessa concreta |
+| `dor-no-quadril.html` | Dor no Quadril: Causas, o Que Pode Ser e Quando Se Preocupar | cobre "dor no quadril esquerdo" |
+| `cirurgioes-curitiba.html` | Cirurgião de Quadril em Curitiba: Onde Encontrar | cobre "especialista em quadril curitiba" |
+
+### Conteúdo novo em páginas antigas
+
+- `dor-no-quadril.html`: seção "Dor no quadril esquerdo ou direito: o lado muda alguma coisa?" mais uma pergunta de FAQ, atacando `dor no quadril esquerdo`.
+- `artrose-de-quadril.html`: seção "Coxartrose é grave? E quando é nos dois lados?" mais duas perguntas de FAQ, atacando `coxartrose é grave` e `coxartrose bilateral tem cura`.
+
+### Links contextuais criados
+
+Para `dor-na-virilha.html`: a partir de `artrose-de-quadril.html` (sintomas), `bursite-no-quadril.html` (dois), `dor-no-quadril.html` (dois), `como-aliviar-dor-artrose-quadril.html`, `fratura-de-quadril-no-idoso.html`, `index.html` (card e atalho). Para `artroscopia-de-quadril.html`: `artrose-de-quadril.html` (fatores de risco), `protese-de-quadril.html` (indicação), `quanto-custa-protese-de-quadril.html`, `dor-no-quadril.html`, `index.html` (card). As duas páginas novas ganharam bloco `.related` com seis links cada.
+
+### QA
+
+O script da seção 8 virou `build/qa.py` e ganhou três verificações: presença do botão de busca, presença da âncora `#conteudo` e checagem de que o sitemap não aponta para arquivo inexistente. Rodou limpo nas 16 páginas. Além dele, quatro scripts de teste com Chromium headless verificam menu mobile, filtros do índice, botão de voltar ao topo, barra de leitura, e o popup de busca (abertura por atalho, busca sem acento, navegação por setas, fechamento por Esc), todos sem erro de JS.
+
+### No Search Console, submeter
+
+O sitemap, mais indexação de `dor-na-virilha.html`, `artroscopia-de-quadril.html`, `artigos.html`, `quanto-custa-protese-de-quadril.html`, `artrose-de-quadril.html`, `dor-no-quadril.html`, `bursite-no-quadril.html` e a home.
+
+### A próxima alavanca continua sendo a mesma da seção 18
+
+As páginas-pilar seguem magras para o que se quer ranquear: `protese-de-quadril.html` com cerca de 1.300 palavras é o alvo do termo número 2 do site, `recuperacao-protese-de-quadril.html` tem 1.000 e `dor-no-quadril.html` cerca de 1.100 mesmo depois da seção nova. `artrose-de-quadril.html`, o pilar número 1, está em torno de 2.200. Para comparação, as três páginas mais novas têm de 4.200 a 7.000. **Expandir `protese-de-quadril.html` e `artrose-de-quadril.html` ao padrão das páginas novas provavelmente rende mais posição do que qualquer artigo inédito da fila.** Dentro da expansão da página de recuperação cabe, de quebra, o tema "o que não pode fazer depois da prótese", que era o item 1 da fila da seção 13 e é busca altíssima.
+
