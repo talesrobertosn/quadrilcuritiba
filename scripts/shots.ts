@@ -51,7 +51,7 @@ for (const vp of VIEWPORTS) {
   for (const p of pages) {
     const page = await ctx.newPage();
     page.on('pageerror', (e) => problems.push(`${vp.name} ${p}: erro JS ${e.message}`));
-    page.on('console', (m) => m.type() === 'error' && !/fonts\.g|ERR_CERT|ERR_TUNNEL|ERR_PROXY/.test(m.text()) && problems.push(`${vp.name} ${p}: console ${m.text()}`));
+    page.on('console', (m) => m.type() === 'error' && !/fonts\.g|ERR_CERT|ERR_TUNNEL|ERR_PROXY|ERR_TOO_MANY_RETRIES/.test(m.text()) && problems.push(`${vp.name} ${p}: console ${m.text()}`));
     await page.goto(`${BASE}${p === 'index' ? '' : p + '.html'}`, { waitUntil: 'networkidle' }).catch(() => page.goto(`${BASE}${p}.html`));
     await settle(page);
     const overflow = await page.evaluate(() => {

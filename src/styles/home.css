@@ -733,7 +733,7 @@
   color: #fff;
 }
 .cta-compact {
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
 }
 .cta-compact .cta-points {
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -741,7 +741,14 @@
 @media (max-width: 900px) {
   .cta-cir,
   .cta-compact .cta-points {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .cta-cir .btn {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
   }
 }
 
