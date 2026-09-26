@@ -1,0 +1,30 @@
+name: Build e QA
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Tipagem
+        run: npm run check
+      - name: Build
+        run: npm run build
+      - name: QA de SEO e links
+        run: npm run qa
+      - name: HTML publicado está em dia com o código-fonte
+        run: |
+          if [ -n "$(git status --porcelain -- '*.html' sitemap.xml robots.txt site.webmanifest assets)" ]; then
+            echo "::error::O HTML da raiz não corresponde ao build. Rode 'npm run build' e faça commit."
+            git status --porcelain
+            exit 1
+          fi

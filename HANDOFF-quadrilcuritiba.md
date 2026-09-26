@@ -2,9 +2,9 @@
 
 Documento de transferência de contexto. Leia inteiro antes de produzir qualquer coisa.
 
-**Próxima tarefa combinada: expandir as páginas-pilar `protese-de-quadril.html` e `artrose-de-quadril.html`.** Detalhes na seção 19. A página de dor na virilha e a de artroscopia foram publicadas em 03/09/2026.
+**ATENÇÃO — ARQUITETURA NOVA DESDE 26/09/2026 (seção 20).** O site foi reescrito como gerador estático em TypeScript. As seções 4, 8, 18 e 19 descrevem o build antigo em Python, que foi **removido** do repositório (pasta `build/`, `styles.css`, `main.js`, `BUILD-*`). Não recrie esses arquivos e nunca edite o HTML da raiz à mão: ele é gerado por `npm run build` a partir de `src/`. Leia a seção 20 e o `README.md` antes de qualquer coisa.
 
-**Atenção antes de rodar qualquer script:** leia as seções 18 e 19. Desde 03/09/2026 o build vive na pasta `build/` do repositório e o script de propagação é o `build/propagate.py`, que substituiu o antigo `apply_polish.py`. A fonte da verdade do CSS e do JS passou a ser `build/design.css` e `build/main.js`; `styles.css`, `main.js`, `BUILD-design.css` e `BUILD-main.js` na raiz são cópias de referência geradas a partir deles.
+**Próxima tarefa combinada (continua valendo):** expandir as páginas-pilar `protese-de-quadril` e `artrose-de-quadril` (agora em `src/content/articles/`).
 
 ---
 
@@ -520,3 +520,49 @@ O sitemap, mais indexação de `dor-na-virilha.html`, `artroscopia-de-quadril.ht
 
 As páginas-pilar seguem magras para o que se quer ranquear: `protese-de-quadril.html` com cerca de 1.300 palavras é o alvo do termo número 2 do site, `recuperacao-protese-de-quadril.html` tem 1.000 e `dor-no-quadril.html` cerca de 1.100 mesmo depois da seção nova. `artrose-de-quadril.html`, o pilar número 1, está em torno de 2.200. Para comparação, as três páginas mais novas têm de 4.200 a 7.000. **Expandir `protese-de-quadril.html` e `artrose-de-quadril.html` ao padrão das páginas novas provavelmente rende mais posição do que qualquer artigo inédito da fila.** Dentro da expansão da página de recuperação cabe, de quebra, o tema "o que não pode fazer depois da prótese", que era o item 1 da fila da seção 13 e é busca altíssima.
 
+
+
+---
+
+## 20. Registro da entrega de 26/09/2026 — reescrita em TypeScript, design v4 e diretório de cirurgiões
+
+### Arquitetura
+
+O site virou um gerador estático em TypeScript (Node 20+, `tsx`, `esbuild`). A saída continua sendo HTML estático na raiz, servido pelo GitHub Pages, **com as mesmas URLs**. Estrutura e comandos no `README.md`. Resumo:
+
+| Onde | O quê |
+|---|---|
+| `src/site.config.ts` | Configuração central. O campo `doctor` é o interruptor da Etapa 2 |
+| `src/content/articles/<slug>.ts` | Metadados, FAQ, resumo, referências e relacionados de cada artigo (tipados) |
+| `src/content/articles/<slug>.html` | O corpo do texto do artigo |
+| `src/data/surgeons.ts` | Diretório de cirurgiões (vazio; modelo comentado no arquivo) |
+| `src/data/search.ts` | Atalhos curados da busca e palavras-chave por página |
+| `src/pages/*.ts` | Templates de cada tipo de página |
+| `src/client/*.ts` | JavaScript do navegador, compilado para `assets/app.js` |
+| `src/styles/*.css` | Sistema de design; o CSS é minificado e embutido em cada página |
+| `scripts/qa.ts` | O QA da seção 8, portado e ampliado |
+
+Fluxo: editar `src/` → `npm test` (tipagem, build, QA) → commit do código e do HTML gerado. O GitHub Actions (`.github/workflows/ci.yml`) repete tudo e falha se o HTML da raiz estiver desatualizado.
+
+O FAQPage, o BreadcrumbList e o MedicalWebPage nascem dos mesmos dados que geram o HTML visível, então o problema da seção 18 (schema divergente do FAQ) deixou de ser possível. O QA também passou a checar âncoras entre páginas, `width`/`height` de imagens e a **ausência do nome do dono** enquanto `doctor` for `null`.
+
+### Design v4
+
+Mesma paleta da marca (verde-petróleo, verde-água, dourado), com acabamento editorial: hero escuro na home com busca em destaque, atalhos "qual é o seu momento", biblioteca em grade com cor por eixo temático, faixa "honestidade com os números", artigos com índice lateral fixo que acompanha a leitura (anel de progresso), resumo em cartão escuro, referências recolhíveis, caixa de transparência editorial, "Leia também" em cards para **todos** os artigos, tema escuro automático com botão, zoom de imagens, link direto para cada seção. Busca rápida agora encontra também **todos os H2 do site** (157 itens), carregando o índice só quando abre.
+
+### Diretório de cirurgiões (upgrade)
+
+`cirurgioes-curitiba.html` foi reescrita para o termo "cirurgião de quadril em Curitiba": diretório com filtros por foco de atuação e forma de atendimento (aparece com estado "lista em formação" enquanto estiver vazio), checklist de como escolher (CRM, RQE, atuação em quadril, hospital, volume, conversa honesta), perguntas para levar à consulta com botão de copiar, os três caminhos em Curitiba (SUS, convênio com os prazos da ANS, particular) e ficha de inscrição para cirurgiões com **prévia do card ao vivo**, que gera o e-mail pronto (Gmail, app de e-mail ou copiar). Nada é armazenado no site. Seis perguntas novas no FAQ.
+
+**Compromisso assumido na página:** só entra no diretório quem tiver CRM e RQE conferidos no portal do CFM. Manter isso.
+
+### SEO
+
+- H1 da home passou a conter o termo-alvo: "Cirurgia do quadril em Curitiba, explicada com clareza". Nova seção "Cirurgia do quadril em Curitiba: por onde começar".
+- `MedicalWebPage` ganhou `lastReviewed`, `medicalAudience`, `citation` (as referências), `wordCount`, `timeRequired` e `author` (organização; médico na Etapa 2).
+- Sitemap com `image:image`; robots bloqueia `/src/` e `/scripts/`; `site.webmanifest`; página 404 própria (noindex).
+- Recuperado um item de FAQ de `dor-no-quadril` ("esquerdo ou direito") que estava fora do bloco de FAQ na versão anterior.
+
+### Etapa 2
+
+Preencher `doctor` em `src/site.config.ts` (nome, CRM, RQE, título, bio, foto, redes, endereço da clínica) e rodar o build. Assinatura, schema Physician, `author`/`reviewedBy` e bloco na página Sobre aparecem sozinhos.

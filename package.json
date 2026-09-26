@@ -1,0 +1,27 @@
+{
+  "name": "quadrilcuritiba",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Gerador estático em TypeScript do site quadrilcuritiba.com.br",
+  "scripts": {
+    "build": "tsx scripts/build.ts",
+    "check": "tsc --noEmit",
+    "qa": "tsx scripts/qa.ts",
+    "serve": "tsx scripts/serve.ts",
+    "shots": "tsx scripts/shots.ts",
+    "uitest": "tsx scripts/uitest.ts",
+    "test": "npm run check && npm run build && npm run qa"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "esbuild": "^0.28.2",
+    "node-html-parser": "^9.0.4",
+    "playwright-core": "^1.63.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}
