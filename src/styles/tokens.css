@@ -1,0 +1,149 @@
+/* ==========================================================================
+   Tokens do sistema de design v4 — "calma clínica, acabamento editorial"
+   Paleta derivada da marca: verde-petróleo, verde-água e dourado.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Superfícies */
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --surface-2: #f4f1ea;
+  --mist: #edf4f2;
+  --tint: #e3f0ed;
+
+  /* Texto */
+  --ink: #0e2b2b;
+  --text: #344947;
+  --muted: #677c79;
+  --line: #e6e1d8;
+  --line-2: #d9e5e2;
+
+  /* Marca */
+  --brand: #0f5b5e;
+  --brand-600: #0d4d50;
+  --brand-700: #0a3f41;
+  --brand-900: #062a2c;
+  --aqua: #8fcbc7;
+  --aqua-2: #b9e0dc;
+  --gold: #c8994a;
+  --gold-2: #e2b867;
+  --gold-50: #fbf4e6;
+  --alert: #b0503a;
+  --alert-50: #fbefeb;
+  --ok: #2f7d57;
+
+  /* Categorias */
+  --cat-dor: #c0603f;
+  --cat-dor-50: #fcefe9;
+  --cat-diagnostico: #3f5f93;
+  --cat-diagnostico-50: #ecf1f9;
+  --cat-cirurgia: #0f5b5e;
+  --cat-cirurgia-50: #e3f0ed;
+  --cat-recuperacao: #3b7d4f;
+  --cat-recuperacao-50: #e9f4ec;
+
+  /* Tipografia */
+  --f-display: 'Fraunces', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --f-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: var(--f-display); /* compatibilidade com o conteúdo antigo */
+
+  /* Medidas */
+  --wrap: 1200px;
+  --read: 720px;
+  --gutter: clamp(18px, 4vw, 32px);
+  --hdr-h: 72px;
+  --r-sm: 10px;
+  --r: 16px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+
+  /* Sombras em camadas, suaves */
+  --sh-1: 0 1px 2px rgb(14 43 43 / 0.05), 0 1px 1px rgb(14 43 43 / 0.03);
+  --sh-2: 0 2px 4px rgb(14 43 43 / 0.04), 0 8px 24px -6px rgb(14 43 43 / 0.1);
+  --sh-3: 0 4px 10px rgb(14 43 43 / 0.05), 0 24px 56px -16px rgb(14 43 43 / 0.22);
+  --ring: 0 0 0 3px rgb(200 153 74 / 0.45);
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+
+  /* Elementos fixos */
+  --hdr-bg: rgb(250 248 244 / 0.78);
+  --glass: rgb(255 255 255 / 0.08);
+  --glass-line: rgb(255 255 255 / 0.16);
+  --figure-bg: #ffffff;
+}
+
+/* Tema escuro: automático pelo sistema, ou escolhido no botão do cabeçalho. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #081617;
+    --surface: #0d2021;
+    --surface-2: #10272a;
+    --mist: #0c1f21;
+    --tint: #10292b;
+    --ink: #eef6f4;
+    --text: #c2d3d0;
+    --muted: #8ea6a2;
+    --line: #1b3638;
+    --line-2: #1d3b3d;
+    --brand: #6cc3bd;
+    --brand-600: #58b2ac;
+    --brand-700: #3f9690;
+    --aqua: #8fcbc7;
+    --gold: #e0b465;
+    --gold-50: #2a2413;
+    --alert: #ef8a70;
+    --alert-50: #2c1813;
+    --cat-dor: #f09a78;
+    --cat-dor-50: #2c1a13;
+    --cat-diagnostico: #93b1e6;
+    --cat-diagnostico-50: #151f33;
+    --cat-cirurgia: #6cc3bd;
+    --cat-cirurgia-50: #0f2a2b;
+    --cat-recuperacao: #86c99a;
+    --cat-recuperacao-50: #13261a;
+    --sh-1: 0 1px 2px rgb(0 0 0 / 0.3);
+    --sh-2: 0 8px 24px -6px rgb(0 0 0 / 0.5);
+    --sh-3: 0 24px 56px -16px rgb(0 0 0 / 0.7);
+    --hdr-bg: rgb(8 22 23 / 0.78);
+    --figure-bg: #f7faf9;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #081617;
+  --surface: #0d2021;
+  --surface-2: #10272a;
+  --mist: #0c1f21;
+  --tint: #10292b;
+  --ink: #eef6f4;
+  --text: #c2d3d0;
+  --muted: #8ea6a2;
+  --line: #1b3638;
+  --line-2: #1d3b3d;
+  --brand: #6cc3bd;
+  --brand-600: #58b2ac;
+  --brand-700: #3f9690;
+  --aqua: #8fcbc7;
+  --gold: #e0b465;
+  --gold-50: #2a2413;
+  --alert: #ef8a70;
+  --alert-50: #2c1813;
+  --cat-dor: #f09a78;
+  --cat-dor-50: #2c1a13;
+  --cat-diagnostico: #93b1e6;
+  --cat-diagnostico-50: #151f33;
+  --cat-cirurgia: #6cc3bd;
+  --cat-cirurgia-50: #0f2a2b;
+  --cat-recuperacao: #86c99a;
+  --cat-recuperacao-50: #13261a;
+  --sh-1: 0 1px 2px rgb(0 0 0 / 0.3);
+  --sh-2: 0 8px 24px -6px rgb(0 0 0 / 0.5);
+  --sh-3: 0 24px 56px -16px rgb(0 0 0 / 0.7);
+  --hdr-bg: rgb(8 22 23 / 0.78);
+  --figure-bg: #f7faf9;
+}

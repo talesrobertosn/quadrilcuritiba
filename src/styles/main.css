@@ -1,0 +1,7 @@
+/* Quadril Curitiba — folha de estilos. Compilada e embutida em cada página pelo build. */
+@import './tokens.css';
+@import './base.css';
+@import './chrome.css';
+@import './home.css';
+@import './article.css';
+@import './pages.css';
